@@ -1,0 +1,30 @@
+---
+title: Авторизация
+page-class: login
+---
+{{!< main}} 
+
+<form class="form" autocomplete="off">
+    <h2 class="form__title">Вход</h2>
+    <div class="form__field">
+        <label class="form__label">
+            <input class="form__input" placeholder=" " name="login" type="text" required minlength="3">
+            <span>Логин</span>
+            <div class="form__error">Неверный логин</div>
+        </label>               
+    </div>
+    <div class="form__field">
+        <label class="form__label">
+            <input class="form__input" placeholder=" " name="password" type="password">
+            <span>Пароль</span>
+            <div class="form__error">Неверный пароль</div>
+        </label>  
+    </div>
+    <div class="form__buttons">
+        {{!-- <button class="button" type="submit">Авторизоваться</button> --}}
+        <a href="chats.hbs" class="button">Авторизоваться</a>
+    </div>    
+    <div class="form__links">
+        <p><a href="register.hbs" class="link form__link">Нет аккаунта?</a></p>
+    </div>
+</form>

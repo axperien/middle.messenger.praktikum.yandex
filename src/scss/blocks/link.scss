@@ -1,0 +1,15 @@
+.link {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    color: $c-violet;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &--red {
+        color: #FF0000;
+    }
+}

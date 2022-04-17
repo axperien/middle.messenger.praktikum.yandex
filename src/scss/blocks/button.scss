@@ -1,0 +1,32 @@
+.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 280px;
+    height: 37px;
+    max-width: 100%;
+    margin: 0 auto;
+
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+
+    cursor: pointer;
+    border: 2px solid $c-violet;
+    background: $c-violet;
+    border-radius: $bradius;
+
+    transition: $transition;
+
+    appearance: none;
+
+    &:hover,
+    &:focus {
+        background-color: transparent;
+        color: $c-violet;
+    }
+}

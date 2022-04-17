@@ -1,0 +1,62 @@
+---
+title: Регистрация
+page-class: register
+---
+{{!< main}} 
+
+<form class="form">
+    <h2 class="form__title">Регистрация</h2>
+    <div class="form__field">
+        <label class="form__label">
+            <input class="form__input" placeholder=" " name="email" type="email" autocomplete="new-email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <span>Почта</span>
+            <div class="form__error">Неверный email</div>
+        </label>
+    </div>
+    <div class="form__field">
+        <label class="form__label">
+            <input class="form__input" placeholder=" " name="login" type="text" required minlength="3">
+            <span>Логин</span>            
+            <div class="form__error">Минимум 3 символа</div>
+        </label>
+    </div>
+    <div class="form__field">
+        <label class="form__label">
+            <input class="form__input" placeholder=" " name="first_name" type="text">
+            <span>Имя</span>
+        </label>
+    </div>
+    <div class="form__field">
+        <label class="form__label">
+            <input class="form__input" placeholder=" " name="second_name" type="text">
+            <span>Фамилия</span>
+        </label>
+    </div>
+    <div class="form__field">
+        <label class="form__label">
+            <input class="form__input" placeholder=" " name="phone" type="tel">
+            <span>Телефон</span>
+        </label>
+    </div>
+    <div class="form__field">
+        <label class="form__label">
+            <input class="form__input" placeholder=" " name="password" type="password" autocomplete="new-password" required minlength="6">
+            <span>Пароль</span>
+            <div class="form__error">Минимум 6 символов</div>
+        </label>
+    </div>
+    <div class="form__field">
+        <label class="form__label">
+            <input class="form__input" placeholder=" " name="password_repeat" type="password">
+            <span>Пароль</span>
+            <div class="form__error">Пароли не совпадают</div>
+        </label>
+    </div>
+    <div class="form__buttons">
+        {{!-- <button class="button" type="submit">Зарегистрироваться</button> --}}
+        <a href="chats.hbs" class="button">Зарегистрироваться</a>
+    </div>    
+    <div class="form__links">
+        <a href="login.hbs" class="link form__link">Войти</a>
+    </div>
+</form>
