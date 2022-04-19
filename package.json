@@ -7,6 +7,8 @@
     "clean-dist": "rm -rf dist && mkdir dist",
     "copy-images": "cp -vR ./static/images ./dist",
     "copy-data": "cp -vR ./static/data.json ./dist",
+    "copy-netlify-redirect": "cp -vR ./static/_redirects ./dist",
+    "init": "npm run clean-dist && npm run copy-images && npm run copy-data && npm run copy-netlify-redirect",
     "init": "npm run clean-dist && npm run copy-images && npm run copy-data",
     "start": "npm run build && node server.js",
     "build": "npm run init && parcel build static/index.html",
