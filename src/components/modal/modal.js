@@ -1,3 +1,5 @@
+import fileinput from "../fileinput/fileinput";
+
 export default () => {
     const modals = document.querySelectorAll('.modal');
     const buttons = document.querySelectorAll('[data-modal-id]');
@@ -25,4 +27,6 @@ export default () => {
             }
         });
     });
+
+    fileinput();
 }
