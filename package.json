@@ -2,7 +2,6 @@
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
   "description": "",
-  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "clean-dist": "rm -rf dist && mkdir dist",
     "copy-images": "cp -vR ./static/images ./dist",
