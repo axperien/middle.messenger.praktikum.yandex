@@ -1,10 +1,3 @@
-const data = {
-    link: {
-        url: '/user',
-        text: 'Профиль'
-    }
-}
-
 const template = `
     <div class="chats">
         <aside class="chats__sidebar">
