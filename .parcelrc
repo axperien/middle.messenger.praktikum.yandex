@@ -4,10 +4,5 @@
   "transformers": {
     "*.hbs": ["@anikin/parcel-transformer-handlebars"],
     "*.scss": ["@parcel/transformer-sass", "@parcel/transformer-postcss"]
-  },
-  "optimizers": {
-    "*.css": [
-      "@parcel/optimizer-css"
-    ]
   }
 } 
