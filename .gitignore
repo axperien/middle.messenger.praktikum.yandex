@@ -1,0 +1,6 @@
+node_modules
+dist
+.DS_Store
+.cache
+.parcel-cache
+src_sprint1_v1

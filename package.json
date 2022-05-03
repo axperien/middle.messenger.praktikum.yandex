@@ -1,0 +1,31 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "clean-dist": "rm -rf dist && mkdir dist",
+    "copy-images": "cp -vR ./static/images ./dist",
+    "copy-data": "cp -vR ./static/data.json ./dist",
+    "copy-netlify-redirect": "cp -vR ./static/_redirects ./dist",
+    "init": "npm run clean-dist && npm run copy-images && npm run copy-data && npm run copy-netlify-redirect",
+    "start": "npm run build && node server.js",
+    "build": "npm run init && parcel build static/index.html",
+    "dev": "npm run init && parcel static/index.html -p 3000 --no-cache --open chrome"
+  },
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@parcel/config-default": "^2.4.1",
+    "@parcel/resolver-glob": "^2.4.1",
+    "@parcel/transformer-postcss": "^2.4.1",
+    "@parcel/transformer-sass": "^2.4.1",
+    "autoprefixer": "^9.8.6",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "handlebars": "^4.7.7",
+    "parcel": "^2.4.1",
+    "parcel-plugin-handlebars": "^0.4.4",
+    "postcss": "^8.4.12",
+    "postcss-modules": "^4.3.1",
+    "sass": "^1.50.0"
+  }
+}
