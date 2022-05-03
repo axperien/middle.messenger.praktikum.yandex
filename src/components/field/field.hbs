@@ -1,0 +1,20 @@
+<div class="form__field">
+    <label class="form__label">
+        <input 
+            class="form__input" 
+            placeholder=" " 
+            name="{{ name }}" 
+            type="{{ type }}" 
+            {{#if (eq required true)}} required {{/if}}            
+            {{#if pattern }} pattern={{ pattern }} {{/if}}
+            {{#if title }} title="{{ title }}" {{/if}}
+            {{#if (eq type 'password') }} autocomplete="new-password" {{/if}}
+            {{#if minlength }} minlength="{{ minlength }}" {{/if}}
+            {{#if maxlength }} maxlength="{{ maxlength }}" {{/if}}
+            >
+        <span>{{ text }}</span>        
+        {{#if errorText }}
+            <div class="form__error">{{ errorText }}</div>
+        {{/if}}
+    </label>
+</div>

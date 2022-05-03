@@ -1,0 +1,28 @@
+<div class="chats">
+    <aside class="chats__sidebar">
+        <div class="chats__header">
+            <div class="chats__profile">
+                {{> link link }}
+            </div>
+            <div class="chats__search">
+
+            </div>
+        </div>
+        {{> chatList }}
+    </aside>
+    <section class="chats__container dialog">
+        {{#if dialog }}
+            {{> chatInfo avatar=dialog.avatar name=dialog.name }}
+            <div class="dialog__messages">
+                {{#each dialog.messages }}
+                    {{> chatMessage message=dialog.message }}
+                {{else}}
+                    <div class="chats__empty">Пока что тут нет сообщений</div>
+                {{/each}}
+            </div>
+            {{> chatForm dialog.form }}
+        {{else}}
+            <div class="chats__empty">Выберите чат чтобы отправить сообщение</div>
+        {{/if}}
+    </section>
+</div>

@@ -16,6 +16,7 @@
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@parcel/config-default": "^2.4.1",
     "@parcel/resolver-glob": "^2.4.1",
+    "@parcel/transformer-inline-string": "^2.4.1",
     "@parcel/transformer-postcss": "^2.4.1",
     "@parcel/transformer-sass": "^2.4.1",
     "autoprefixer": "^9.8.6",
