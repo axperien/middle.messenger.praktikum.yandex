@@ -9,7 +9,7 @@
   "scripts": {
     "eslint": "eslint **/*.ts --fix",
     "start": "npm run build && node server.js",
-    "build": "parcel build index.html",
+    "build": "parcel build index.html --log-level verbose",
     "dev": "parcel index.html -p 3000 --no-cache --open chrome"
   },
   "devDependencies": {
