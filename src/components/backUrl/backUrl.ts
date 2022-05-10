@@ -6,6 +6,8 @@ interface BackUrlProps {
 }
 
 export class BackUrl extends Block {
+    public static componentName = 'BackUrl';
+
     constructor(props: BackUrlProps) {
         super(props);
     }

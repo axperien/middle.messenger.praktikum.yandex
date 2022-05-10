@@ -9,6 +9,8 @@ interface ChatMessageProps {
 }
 
 export class ChatMessage extends Block {
+    public static componentName = 'ChatMessage';
+
     constructor(props: ChatMessageProps) {
         super(props);
     }

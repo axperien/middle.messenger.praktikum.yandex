@@ -11,6 +11,8 @@ interface ChatListProps {
 }
 
 export class ChatList extends Block {
+    public static componentName = 'ChatList';
+
     constructor({
         chats,
         onClick = () => {}

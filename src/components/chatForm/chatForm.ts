@@ -7,6 +7,8 @@ interface ChatFormProps {
 }
 
 export class ChatForm extends Block {
+    public static componentName = 'ChatForm';
+
     constructor(props: ChatFormProps) {
         super({
             ...props,

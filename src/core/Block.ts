@@ -1,6 +1,6 @@
 import EventBus from './EventBus';
-import {Nullable, Values} from './types';
-import {nanoid} from 'nanoid';
+import { Nullable, Values } from './types';
+import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 
 interface BlockMeta<P = any> {
@@ -28,6 +28,8 @@ export default class Block<P = any> {
 
   protected state: any = {};
   protected refs: {[key: string]: HTMLElement} = {};
+
+  public static componentName?: string;
 
   public constructor(props?: P) {
     const eventBus = new EventBus<Events>();
@@ -120,7 +122,11 @@ export default class Block<P = any> {
 
     this._element = newElement as HTMLElement;
 
-    const input = this._element.querySelector('input.form__input') as HTMLInputElement;    
+    let input = null;
+
+    if (this._element) {
+        input = this._element.querySelector('input.form__input') as HTMLInputElement;
+    }
     
     this._addEvents(input);
   }

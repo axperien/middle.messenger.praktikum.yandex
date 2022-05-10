@@ -12,6 +12,8 @@ interface FieldProps {
   }
 
 export class Field extends Block {
+    public static componentName = 'Field';
+
     constructor(props: FieldProps) {
         super({ 
             ...props,

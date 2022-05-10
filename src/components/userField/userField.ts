@@ -14,6 +14,8 @@ interface UserFieldProps {
   }
 
 export class UserField extends Block {
+    public static componentName = 'UserField';
+
     constructor(props: UserFieldProps) {
         super({ 
             ...props,

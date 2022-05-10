@@ -9,6 +9,8 @@ interface ButtonProps {
 }
 
 export class Button extends Block {
+    public static componentName = 'Button';
+
     constructor({text, cls, type = 'button', onClick = () => {}}: ButtonProps) {
         super({ text, cls, type, events: { click: onClick } });
     }
