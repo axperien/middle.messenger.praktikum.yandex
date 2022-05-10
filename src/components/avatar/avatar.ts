@@ -13,6 +13,7 @@ export class Avatar extends Block {
     constructor(props: AvatarProps) {
         super(props);
     }
+
     render(): string {
         return `
             <div class="avatar">

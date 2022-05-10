@@ -3,7 +3,7 @@ import validateForm from '../../core/validateForm';
 
 interface FieldProps {
     type: string,
-    name: string, 
+    name: string,
     text: string,
     errorText?: string,
     value?: string,
@@ -15,11 +15,11 @@ export class Field extends Block {
     public static componentName = 'Field';
 
     constructor(props: FieldProps) {
-        super({ 
+        super({
             ...props,
             events: {
                 blur: (e: Event): void => {
-                    console.log('blur')
+                    console.log('blur');
                 },
                 focus: (e: Event): void => {
                     console.log('focus');
@@ -34,17 +34,17 @@ export class Field extends Block {
                         const valid = false;
                         // this.setProps({
                         //     errorText,
-                                // valid
+                        //     valid
                         // });
 
                         console.log(this.props.errorText);
                     }
-                }
-            }
+                },
+            },
         });
     }
 
-    render(): string {       
+    render(): string {
         return `
             <div class="form__field">
                 <label class="form__label">

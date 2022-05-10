@@ -12,6 +12,7 @@ export class ChatInfo extends Block {
     constructor(props: ChatInfoProps) {
         super(props);
     }
+
     render(): string {
         return `
             <div class="dialog__header">

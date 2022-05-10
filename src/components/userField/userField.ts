@@ -3,7 +3,7 @@ import validateForm from '../../core/validateForm';
 
 interface UserFieldProps {
     type: string,
-    name: string, 
+    name: string,
     text: string,
     placeholder: string,
     errorText?: string,
@@ -17,20 +17,20 @@ export class UserField extends Block {
     public static componentName = 'UserField';
 
     constructor(props: UserFieldProps) {
-        super({ 
+        super({
             ...props,
             events: {
                 blur: (e: Event): void => {
-                    console.log('blur')
+                    console.log('blur');
                 },
                 focus: (e: Event): void => {
                     console.log('focus');
-                }
-            }
+                },
+            },
         });
     }
 
-    render(): string {       
+    render(): string {
         return `
             <div class="user__field">
                 <label class="user__label">

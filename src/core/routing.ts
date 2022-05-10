@@ -11,44 +11,44 @@ const pages = {
     home: {
         title: 'Главная страница',
         id: 'home',
-        Page: pageHome
+        Page: pageHome,
     },
     login: {
         title: 'Авторизация',
         id: 'login',
-        Page: pageLogin
+        Page: pageLogin,
     },
     register: {
         title: 'Регистрация',
         id: 'register',
-        Page: pageRegister
+        Page: pageRegister,
     },
     500: {
         title: 'Ошибка 500',
         id: 'error_500',
-        Page: page500
+        Page: page500,
     },
     404: {
         title: 'Ошибка 404',
         id: 'error_404',
-        Page: page404
+        Page: page404,
     },
     user: {
         title: 'Профль',
         id: 'user',
-        Page: pageUser
+        Page: pageUser,
     },
     chats: {
         title: 'Список чатов',
         id: 'chats',
-        Page: pageChats
-    }
-}
+        Page: pageChats,
+    },
+};
 
 const getCurrentLocationPath = (): string => {
-    const { pathname } = window.location;    
+    const { pathname } = window.location;
     return pathname.substring(1, pathname.length);
-}
+};
 
 const currentLocation = getCurrentLocationPath() || 'home';
 
@@ -56,4 +56,4 @@ export const getCurrentPage = (): { title: string, id: string, Page: Block } => 
     const currentPage = pages[currentLocation] || pages[404];
 
     return currentPage;
-}
+};

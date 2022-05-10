@@ -14,6 +14,7 @@ export class ChatMessage extends Block {
     constructor(props: ChatMessageProps) {
         super(props);
     }
+
     render(): string {
         return `
             <div class="message message--{{ from }}">

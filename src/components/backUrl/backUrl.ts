@@ -11,6 +11,7 @@ export class BackUrl extends Block {
     constructor(props: BackUrlProps) {
         super(props);
     }
+
     render(): string {
         return `
             <div class="back">

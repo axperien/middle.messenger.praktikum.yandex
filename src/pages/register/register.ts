@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 
-export class RegisterPage extends Block {    
+export class RegisterPage extends Block {
     getStateFromProps() {
         this.state = {
             title: 'Регистрация',
@@ -10,60 +10,60 @@ export class RegisterPage extends Block {
                     name: 'email',
                     text: 'Почта',
                     value: '',
-                    valid: true
+                    valid: true,
                 },
                 login: {
-                    type: 'text', 
-                    name: 'login', 
+                    type: 'text',
+                    name: 'login',
                     text: 'Логин',
                     value: '',
-                    valid: true
+                    valid: true,
                 },
                 first_name: {
                     type: 'text',
                     name: 'first_name',
                     text: 'Имя',
                     value: '',
-                    valid: true
+                    valid: true,
                 },
                 second_name: {
                     type: 'text',
                     name: 'second_name',
                     text: 'Фамилия',
                     value: '',
-                    valid: true
+                    valid: true,
                 },
                 phone: {
                     type: 'tel',
                     name: 'phone',
                     text: 'Телефон',
                     value: '',
-                    valid: true
+                    valid: true,
                 },
                 password: {
-                    type: 'password', 
-                    name: 'password', 
+                    type: 'password',
+                    name: 'password',
                     text: 'Пароль',
                     value: '',
-                    valid: true
+                    valid: true,
                 },
                 password_repeat: {
-                    type: 'password', 
-                    name: 'password_repeat', 
+                    type: 'password',
+                    name: 'password_repeat',
                     text: 'Пароль еще раз',
                     value: '',
-                    valid: true
-                }
+                    valid: true,
+                },
             },
             button: {
                 cls: 'form__button',
                 text: 'Зарегистрироваться',
-                type: 'submit'
+                type: 'submit',
             },
             link: {
                 cls: '',
                 text: 'Войти',
-                url: '/login'
+                url: '/login',
             },
             onSubmit: (e: Event): void => {
                 e.preventDefault();
@@ -71,7 +71,7 @@ export class RegisterPage extends Block {
                 const target = e.target as HTMLButtonElement;
                 const form = target.closest('form');
 
-                const fields = this.state.fields;
+                const { fields } = this.state;
 
                 const fieldsInvalid = [];
 
@@ -90,15 +90,17 @@ export class RegisterPage extends Block {
                     const formData = new FormData(form);
                     const data = {};
 
-                    for(let [name, value] of formData) {
+                    // eslint-disable-next-line no-restricted-syntax
+                    for (const [name, value] of formData) {
                         data[name] = value;
                     }
 
                     console.log(data);
                 }
-            }
-        }
+            },
+        };
     }
+
     render() {
         return `
             <form class="form" autocomplete="off">
@@ -131,6 +133,6 @@ export class RegisterPage extends Block {
                     }}}
                 </div>
             </form>
-        `
+        `;
     }
 }

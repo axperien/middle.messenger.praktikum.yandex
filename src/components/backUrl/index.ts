@@ -1,1 +1,1 @@
-export { BackUrl as default } from './backUrl';
+export { BackUrl } from './backUrl';

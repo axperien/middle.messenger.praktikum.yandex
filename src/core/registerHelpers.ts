@@ -1,4 +1,5 @@
-import Handlebars from "handlebars";
+/* eslint-disable prefer-rest-params */
+import Handlebars from 'handlebars';
 
 Handlebars.registerHelper({
     eq: (v1, v2) => v1 === v2,
@@ -12,5 +13,5 @@ Handlebars.registerHelper({
     },
     or() {
         return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
-    }
+    },
 });

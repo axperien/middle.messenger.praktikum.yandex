@@ -12,6 +12,8 @@
         "import/no-unresolved": 0,
         "no-unused-vars": 0,
         "import/prefer-default-export": 0,
+        "no-useless-constructor": 0,
+        "no-restricted-exports": 0,
         "import/extensions": 0,
         "@typescript-eslint/no-explicit-any": 0,
         "no-shadow": "off",

@@ -1,17 +1,17 @@
 import Block from '../../core/Block';
 
-export class UserPage extends Block {    
+export class UserPage extends Block {
     getStateFromProps() {
         const stateForSettings = {
             default: {
                 name: 'Иван',
                 back: {
-                    url: '/chats'
+                    url: '/chats',
                 },
                 avatar: {
                     image: './images/avatar1.png',
                     image_x2: './images/avatar1@2x.png',
-                    overlay_text: 'Поменять аватар'
+                    overlay_text: 'Поменять аватар',
                 },
                 fields: [
                     {
@@ -22,11 +22,11 @@ export class UserPage extends Block {
                         readonly: true,
                     },
                     {
-                        type: 'text', 
-                        name: 'login', 
+                        type: 'text',
+                        name: 'login',
                         value: 'ivanivanov',
                         text: 'Логин',
-                        readonly: true
+                        readonly: true,
                     },
                     {
                         type: 'text',
@@ -43,8 +43,8 @@ export class UserPage extends Block {
                         readonly: true,
                     },
                     {
-                        type: 'text', 
-                        name: 'display_name', 
+                        type: 'text',
+                        name: 'display_name',
                         value: 'Иван',
                         text: 'Имя в чате',
                         readonly: true,
@@ -65,8 +65,8 @@ export class UserPage extends Block {
                         onClick: (e: Event) => {
                             e.preventDefault();
                             this.state = stateForSettings.editData;
-                            this._componentDidUpdate(this.state, stateForSettings.editData);
-                        }
+                            this.componentDidUpdate(this.state, stateForSettings.editData);
+                        },
                     },
                     {
                         url: '#',
@@ -75,47 +75,47 @@ export class UserPage extends Block {
                         onClick: (e: Event) => {
                             e.preventDefault();
                             this.state = stateForSettings.editPassword;
-                            this._componentDidUpdate(this.state, stateForSettings.editPassword);
-                        }
+                            this.componentDidUpdate(this.state, stateForSettings.editPassword);
+                        },
                     },
                     {
                         url: '/login',
                         text: 'Выйти',
-                        cls: 'link--red user__link'
-                    }
-                ]   
+                        cls: 'link--red user__link',
+                    },
+                ],
             },
             editPassword: {
                 name: 'Иван',
                 back: {
-                    url: '/chats'
+                    url: '/chats',
                 },
                 avatar: {
                     image: './images/avatar1.png',
                     image_x2: './images/avatar1@2x.png',
-                    overlay_text: 'Поменять аватар'
+                    overlay_text: 'Поменять аватар',
                 },
                 fields: [
                     {
-                        type: 'password', 
-                        name: 'oldPassword', 
+                        type: 'password',
+                        name: 'oldPassword',
                         text: 'Старый пароль',
                         errorText: 'Неверный пароль',
-                        placeholder: '•••••••••'
+                        placeholder: '•••••••••',
                     },
                     {
-                        type: 'password', 
-                        name: 'newPassword', 
+                        type: 'password',
+                        name: 'newPassword',
                         text: 'Новый пароль',
                         errorText: 'Неверный пароль',
-                        placeholder: '•••••••••••'
+                        placeholder: '•••••••••••',
                     },
                     {
-                        type: 'password', 
-                        name: 'newPassword_repeat', 
+                        type: 'password',
+                        name: 'newPassword_repeat',
                         text: 'Повторите новый пароль',
                         errorText: 'Неверный пароль',
-                        placeholder: '•••••••••••'
+                        placeholder: '•••••••••••',
                     },
                 ],
                 buttons: [
@@ -130,66 +130,67 @@ export class UserPage extends Block {
                             if (form) {
                                 const formData = new FormData(form);
                                 const data = {};
-            
-                                for(let [name, value] of formData) {
+
+                                // eslint-disable-next-line no-restricted-syntax
+                                for (const [name, value] of formData) {
                                     data[name] = value;
                                 }
-            
+
                                 console.log(data);
                             }
 
                             this.state = stateForSettings.default;
-                            this._componentDidUpdate(this.state, stateForSettings.default);
-                        }
-                    }
-                ]
+                            this.componentDidUpdate(this.state, stateForSettings.default);
+                        },
+                    },
+                ],
             },
             editData: {
                 name: 'Иван',
                 back: {
-                    url: '/chats'
+                    url: '/chats',
                 },
                 avatar: {
                     image: './images/avatar1.png',
                     image_x2: './images/avatar1@2x.png',
-                    overlay_text: 'Поменять аватар'
+                    overlay_text: 'Поменять аватар',
                 },
                 fields: [
                     {
                         type: 'email',
                         name: 'email',
                         value: 'pochta@yandex.ru',
-                        text: 'Почта'
+                        text: 'Почта',
                     },
                     {
-                        type: 'text', 
-                        name: 'login', 
+                        type: 'text',
+                        name: 'login',
                         value: 'ivanivanov',
-                        text: 'Логин'
+                        text: 'Логин',
                     },
                     {
                         type: 'text',
                         name: 'first_name',
                         value: 'Иван',
-                        text: 'Имя'
+                        text: 'Имя',
                     },
                     {
                         type: 'text',
                         name: 'second_name',
                         value: 'Иванов',
-                        text: 'Фамилия'
+                        text: 'Фамилия',
                     },
                     {
-                        type: 'text', 
-                        name: 'display_name', 
+                        type: 'text',
+                        name: 'display_name',
                         value: 'Иван',
-                        text: 'Имя в чате'
+                        text: 'Имя в чате',
                     },
                     {
                         type: 'tel',
                         name: 'phone',
                         value: '+7 (909) 967 30 30',
-                        text: 'Телефон'
+                        text: 'Телефон',
                     },
                 ],
                 buttons: [
@@ -204,24 +205,26 @@ export class UserPage extends Block {
                             if (form) {
                                 const formData = new FormData(form);
                                 const data = {};
-            
-                                for(let [name, value] of formData) {
+
+                                // eslint-disable-next-line no-restricted-syntax
+                                for (const [name, value] of formData) {
                                     data[name] = value;
                                 }
-            
+
                                 console.log(data);
                             }
 
                             this.state = stateForSettings.default;
-                            this._componentDidUpdate(this.state, stateForSettings.default);
-                        }
-                    }
-                ]
-            }
-        }
+                            this.componentDidUpdate(this.state, stateForSettings.default);
+                        },
+                    },
+                ],
+            },
+        };
 
         this.state = stateForSettings.default;
     }
+
     render() {
         return `
             <div class="user">
@@ -277,6 +280,6 @@ export class UserPage extends Block {
                     </form>
                 </div>
             </div>
-        `
+        `;
     }
 }

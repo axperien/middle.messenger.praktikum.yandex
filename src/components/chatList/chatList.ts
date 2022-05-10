@@ -15,15 +15,17 @@ export class ChatList extends Block {
 
     constructor({
         chats,
-        onClick = () => {}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onClick = () => {},
     }: ChatListProps) {
         super({
             chats,
             events: {
-                click: onClick
-            }
+                click: onClick,
+            },
         });
     }
+
     render(): string {
         return `
             <div class="chats__items">

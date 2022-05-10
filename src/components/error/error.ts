@@ -12,6 +12,7 @@ export class Error extends Block {
     constructor(props: ErrorProps) {
         super(props);
     }
+
     render(): string {
         return `
             <div class="error">

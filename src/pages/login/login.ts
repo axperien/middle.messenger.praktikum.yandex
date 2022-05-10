@@ -1,34 +1,34 @@
 import Block from '../../core/Block';
 
-export class LoginPage extends Block {    
+export class LoginPage extends Block {
     getStateFromProps() {
         this.state = {
             title: 'Вход',
             fields: [
                 {
-                    type: 'text', 
-                    name: 'login', 
+                    type: 'text',
+                    name: 'login',
                     text: 'Логин',
                     value: '',
-                    valid: true
+                    valid: true,
                 },
                 {
-                    type: 'password', 
-                    name: 'password', 
+                    type: 'password',
+                    name: 'password',
                     text: 'Пароль',
                     value: '',
-                    valid: true
-                }
+                    valid: true,
+                },
             ],
             button: {
                 cls: 'form__button',
                 text: 'Войти',
-                type: 'submit'
+                type: 'submit',
             },
             link: {
                 cls: '',
                 text: 'Нет аккаунта?',
-                url: '/register'
+                url: '/register',
             },
             onSubmit: (e: Event): void => {
                 e.preventDefault();
@@ -36,7 +36,7 @@ export class LoginPage extends Block {
                 const target = e.target as HTMLButtonElement;
                 const form = target.closest('form');
 
-                const fields = this.state.fields;
+                const { fields } = this.state;
                 const fieldsInvalid = [];
 
                 Object.entries(fields).forEach(([name, params]: [string, any]) => {
@@ -54,15 +54,17 @@ export class LoginPage extends Block {
                     const formData = new FormData(form);
                     const data = {};
 
-                    for(let [name, value] of formData) {
+                    // eslint-disable-next-line no-restricted-syntax
+                    for (const [name, value] of formData) {
                         data[name] = value;
                     }
 
                     console.log(data);
                 }
-            }
-        }
+            },
+        };
     }
+
     render() {
         return `
             <form class="form" autocomplete="off">
@@ -94,6 +96,6 @@ export class LoginPage extends Block {
                     }}}
                 </div>
             </form>
-        `
+        `;
     }
 }

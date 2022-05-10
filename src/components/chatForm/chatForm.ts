@@ -15,23 +15,25 @@ export class ChatForm extends Block {
             events: {
                 submit: (e: Event) => {
                     e.preventDefault();
-                    
+
                     const form = e.target as HTMLFormElement;
 
                     if (form) {
                         const formData = new FormData(form);
                         const data = {};
-    
-                        for(let [name, value] of formData) {
+
+                        // eslint-disable-next-line no-restricted-syntax
+                        for (const [name, value] of formData) {
                             data[name] = value;
                         }
-    
+
                         console.log(data);
                     }
-                }
-            }
+                },
+            },
         });
     }
+
     render(): string {
         return `
             <form class="dialog__form">
