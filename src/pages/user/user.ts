@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import Block from '../../core/Block';
 
 export class UserPage extends Block {
@@ -65,7 +66,7 @@ export class UserPage extends Block {
                         onClick: (e: Event) => {
                             e.preventDefault();
                             this.state = stateForSettings.editData;
-                            this.componentDidUpdate(this.state, stateForSettings.editData);
+                            this._componentDidUpdate(this.state, stateForSettings.editData);
                         },
                     },
                     {
@@ -75,7 +76,7 @@ export class UserPage extends Block {
                         onClick: (e: Event) => {
                             e.preventDefault();
                             this.state = stateForSettings.editPassword;
-                            this.componentDidUpdate(this.state, stateForSettings.editPassword);
+                            this._componentDidUpdate(this.state, stateForSettings.editPassword);
                         },
                     },
                     {
@@ -140,7 +141,7 @@ export class UserPage extends Block {
                             }
 
                             this.state = stateForSettings.default;
-                            this.componentDidUpdate(this.state, stateForSettings.default);
+                            this._componentDidUpdate(this.state, stateForSettings.default);
                         },
                     },
                 ],
@@ -215,7 +216,7 @@ export class UserPage extends Block {
                             }
 
                             this.state = stateForSettings.default;
-                            this.componentDidUpdate(this.state, stateForSettings.default);
+                            this._componentDidUpdate(this.state, stateForSettings.default);
                         },
                     },
                 ],
