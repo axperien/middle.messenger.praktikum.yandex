@@ -6,7 +6,6 @@ import page500 from '../pages/500';
 import page404 from '../pages/404';
 import pageUser from '../pages/user';
 import pageChats from '../pages/chats';
-import pageChat from '../pages/chat';
 
 const pages = {
     home: {
@@ -43,12 +42,7 @@ const pages = {
         title: 'Список чатов',
         id: 'chats',
         Page: pageChats
-    },
-    chat: {
-        title: 'Чат с пользователем',
-        id: 'chats',
-        Page: pageChat
-    },
+    }
 }
 
 const getCurrentLocationPath = (): string => {
