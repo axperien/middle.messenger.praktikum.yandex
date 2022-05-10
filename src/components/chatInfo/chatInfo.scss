@@ -1,5 +1,5 @@
-@import '../../scss/global/variables';
-@import '../../scss/global/mixins';
+@import "../../scss/global/variables";
+@import "../../scss/global/mixins";
 
 .dialog {
     &__header {
@@ -8,16 +8,16 @@
         justify-content: space-between;
 
         .avatar {
+            flex-shrink: 0;
             width: 37px;
             height: 37px;
-            flex-shrink: 0;
             margin-right: 10px;
         }
     }
 
     &__name {
-        font-weight: bold;
         margin-right: auto;
+        font-weight: bold;
     }
 
     &__menu {
@@ -26,25 +26,24 @@
     }
 
     &__messages {
-        flex-grow: 1;
         display: flex;
+        flex-grow: 1;
         flex-wrap: wrap;
         margin: 10px 0;
         padding: 30px 0;
+        overflow-x: scroll;
         border-top: 1px solid $c-gray-light;
         border-bottom: 1px solid $c-gray-light;
-        overflow-x: scroll;
     }
 }
 
 .dialog__menu-button {
     width: 25px;
     height: 25px;
-    border-radius: 100%;
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMyIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDMgMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjEuNSIgY3k9IjIiIHI9IjEuNSIgZmlsbD0iIzFFMUUxRSIvPgo8Y2lyY2xlIGN4PSIxLjUiIGN5PSI4IiByPSIxLjUiIGZpbGw9IiMxRTFFMUUiLz4KPGNpcmNsZSBjeD0iMS41IiBjeT0iMTQiIHI9IjEuNSIgZmlsbD0iIzFFMUUxRSIvPgo8L3N2Zz4K)
+        center center / 3px 15px no-repeat;
     border: none;
-
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMyIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDMgMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjEuNSIgY3k9IjIiIHI9IjEuNSIgZmlsbD0iIzFFMUUxRSIvPgo8Y2lyY2xlIGN4PSIxLjUiIGN5PSI4IiByPSIxLjUiIGZpbGw9IiMxRTFFMUUiLz4KPGNpcmNsZSBjeD0iMS41IiBjeT0iMTQiIHI9IjEuNSIgZmlsbD0iIzFFMUUxRSIvPgo8L3N2Zz4K) center center / 3px 15px no-repeat;
-
+    border-radius: 100%;
     transition: $transition;
     @include button-reset;
 
@@ -55,17 +54,16 @@
 
 .dialog__menu-list {
     position: absolute;
+    top: 100%;
     right: 0;
-    top: 100%;    
-    padding: $padding;
-    width: 210px;
-    background: $c-white;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
-    border-radius: 8px;
-    transition: $transition;
     z-index: 100;
     display: none;
-
+    width: 210px;
+    padding: $padding;
+    background: $c-white;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 14%);
+    transition: $transition;
     pointer-events: none;
 
     .dialog__menu:hover & {
@@ -76,13 +74,12 @@
     button {
         display: block;
         margin: 0 auto;
-        @include button-reset;
-
+        padding: 4px 8px;
         text-align: left;
         border: 1px solid $c-gray-light;
-        padding: 4px 8px;
         border-radius: 8px;
         transition: $transition;
+        @include button-reset;
 
         &:not(:last-child) {
             margin-bottom: 10px;

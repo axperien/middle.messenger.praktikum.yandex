@@ -1,7 +1,7 @@
-@import '../../scss/global/variables';
+@import "../../scss/global/variables";
 
-$c-message-user: #F8F8F8;
-$c-message-self: #E4EDFD;
+$c-message-user: #f8f8f8;
+$c-message-self: #e4edfd;
 $radius: 12px;
 
 .message {
@@ -10,15 +10,14 @@ $radius: 12px;
 
     &:not(:last-child) {
         margin-bottom: 20px;
-    }    
+    }
 
     &__box {
-        position: relative;      
+        position: relative;
         display: flex;
         flex-direction: column;
-        
-        .message--user & {
 
+        .message--user & {
         }
 
         .message--self & {
@@ -33,9 +32,9 @@ $radius: 12px;
     }
 
     &__text {
+        max-width: 400px;
         padding: $padding 20px;
         border-radius: $radius;
-        max-width: 400px;
 
         .message--user & {
             background-color: $c-message-user;
@@ -50,30 +49,28 @@ $radius: 12px;
 
     &__time {
         position: absolute;
-        bottom: 6px;
         right: 10px;
-        white-space: nowrap;
-
-        font-size: 8px;
+        bottom: 6px;
         color: $c-gray;
 
+        font-size: 8px;
+        white-space: nowrap;
         opacity: 0;
-
         transition: $transition;
 
         .message__image + & {
             padding: 0 6px;
             color: $c-white;
-            background: rgba(82, 82, 82, 0.5);
+            background: rgb(82 82 82 / 50%);
             border-radius: $radius;
         }
     }
 
     &__image {
         max-width: 320px;
-        border-radius: $radius;
-        border: 1px solid $c-gray-light;
         overflow: hidden;
+        border: 1px solid $c-gray-light;
+        border-radius: $radius;
 
         .message__text + & {
             margin-top: 10px;
@@ -84,8 +81,8 @@ $radius: 12px;
         }
 
         .message--self & {
-            border-bottom-right-radius: 0;
             margin-left: auto;
+            border-bottom-right-radius: 0;
         }
     }
 }

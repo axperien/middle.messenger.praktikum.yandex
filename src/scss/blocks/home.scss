@@ -1,10 +1,10 @@
 .navigation {
-    width: 400px;
-    max-width: 100%;
-    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 400px;
+    max-width: 100%;
+    margin: auto;
 
     padding: 40px;
 
@@ -12,8 +12,9 @@
 
     &__item {
         display: block;
-        list-style: none;
         text-align: center;
+        list-style: none;
+
         &:not(:last-child) {
             margin-bottom: 20px;
         }
@@ -23,14 +24,14 @@
         display: inline-block;
         padding: 6px 20px;
         color: #000;
-        text-decoration: none;        
+        text-decoration: none;
         transition: 0.3s ease;
 
         @include box();
 
         &:hover {
-            background-color: $c-violet;
             color: #fff;
+            background-color: $c-violet;
         }
     }
 }
