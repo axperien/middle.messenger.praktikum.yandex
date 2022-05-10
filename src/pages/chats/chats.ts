@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 
-export class ChatsPage extends Block {    
+export class ChatsPage extends Block {
     getStateFromProps() {
         this.state = {
             link: {
@@ -290,7 +290,7 @@ export class ChatsPage extends Block {
 
                     this.setState(newState);
                 }
-            }            
+            }
         }
     }
     render() {
