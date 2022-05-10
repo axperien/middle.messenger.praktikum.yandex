@@ -96,17 +96,19 @@
         white-space: nowrap;
     }
 
+    /* stylelint-disable */
     &__text {
         display: box;
-        display: box;
+        display: -webkit-box;        
         overflow: hidden;
         color: $c-gray;
         font-size: 12px;
         line-height: 1.2;
 
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
         text-overflow: ellipsis;
-        text-overflow: ellipsis;
-        text-overflow: ellipsis;
+
         word-wrap: break-word;
         -ms-line-clamp: 2;
         -webkit-line-clamp: 2;
