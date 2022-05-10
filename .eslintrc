@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "airbnb",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+        "no-console": 0,
+        "@typescript-eslint/no-var-requires": 0,
+        "import/no-unresolved": 0,
+        "no-unused-vars": 0,
+        "import/prefer-default-export": 0,
+        "import/extensions": 0,
+        "@typescript-eslint/no-explicit-any": 0,
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"],
+        "indent": ["error", 4]
+    }
+  }
