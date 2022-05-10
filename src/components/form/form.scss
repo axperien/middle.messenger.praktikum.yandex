@@ -65,10 +65,10 @@
             }
         }
 
-        &:required:invalid:not(:placeholder-shown) + span + .form__error {
-            opacity: 1;
-            margin-top: 7px;
-        }
+        // &:required:invalid:not(:placeholder-shown) + span + .form__error {
+        //     opacity: 1;
+        //     margin-top: 7px;
+        // }
     }
 
     &__error {
@@ -76,10 +76,10 @@
         left: 0;
         top: 100%;
         width: 100%;
-        margin-top: 0;
+        margin-top: 7px;
         font-size: 8px;
         color: #FF2F2F;
-        opacity: 0;
+        // opacity: 0;
         pointer-events: none;
         transition: $transition;
         .is-invalid & {
