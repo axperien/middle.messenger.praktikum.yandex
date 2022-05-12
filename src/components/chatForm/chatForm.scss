@@ -9,6 +9,7 @@
 }
 
 .dialog__submit {
+    @include button-reset;
     flex-shrink: 0;
     width: 28px;
     height: 28px;
@@ -18,8 +19,7 @@
     border: none;
     border: 1px solid $c-violet;
     border-radius: 100%;
-    transition: $transition;
-    @include button-reset;
+    transition: $transition;    
 
     &:hover {
         box-shadow: 0 0 6px rgb(0 0 0 / 14%);

@@ -72,14 +72,16 @@
     }
 
     button {
+        @include button-reset;
+        
         display: block;
-        margin: 0 auto;
-        padding: 4px 8px;
+        margin: 0 auto;        
         text-align: left;
+
+        padding: 4px 8px;
         border: 1px solid $c-gray-light;
         border-radius: 8px;
         transition: $transition;
-        @include button-reset;
 
         &:not(:last-child) {
             margin-bottom: 10px;
