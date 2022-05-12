@@ -1,7 +1,7 @@
 import { queryStringify } from './helpers';
 import { HTTPTransportOptions } from './types';
 
-const METHODS = {
+export const METHODS = {
     GET: 'GET',
     POST: 'POST',
     PUT: 'PUT',
@@ -9,7 +9,7 @@ const METHODS = {
 };
 
 export class HTTPTransport {
-    get = (url: string, options:HTTPTransportOptions) => {
+    static get = (url: string, options:HTTPTransportOptions) => {
         const data = queryStringify(options.data);
 
         return this.request(url + data, {
@@ -18,26 +18,24 @@ export class HTTPTransport {
         }, options.timeout);
     };
 
-    put = (url:string, options:HTTPTransportOptions) => this.request(url, {
+    static put = (url:string, options:HTTPTransportOptions) => this.request(url, {
         ...options,
         method: METHODS.PUT,
     }, options.timeout);
 
-    post = (url:string, options:HTTPTransportOptions) => this.request(url, {
+    static post = (url:string, options:HTTPTransportOptions) => this.request(url, {
         ...options,
         method: METHODS.POST,
     }, options.timeout);
 
-    delete = (url:string, options:HTTPTransportOptions) => this.request(url, {
+    static delete = (url:string, options:HTTPTransportOptions) => this.request(url, {
         ...options,
         method: METHODS.DELETE,
     }, options.timeout);
 
     // eslint-disable-next-line class-methods-use-this
-    request = (url:string, options:HTTPTransportOptions, timeout = 5000) => {
+    static request = (url:string, options:HTTPTransportOptions, timeout = 5000) => {
         const { method, data, headers } = options;
-
-        console.log(url, method, options);
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();

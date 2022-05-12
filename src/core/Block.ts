@@ -150,8 +150,6 @@ export default class Block<P = any> {
     }
 
     _makePropsProxy(props: any): any {
-        // Можно и так передать this
-        // Такой способ больше не применяется с приходом ES6+
         const self = this;
 
         return new Proxy(props as unknown as object, {
