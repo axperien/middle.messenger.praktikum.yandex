@@ -1,5 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 import Block from '../../core/Block';
-import validateForm from '../../core/validateForm';
+import { checkFormFieldError } from '../../core/validator';
 
 interface FieldProps {
     type: string,
@@ -7,41 +8,26 @@ interface FieldProps {
     text: string,
     errorText?: string,
     value?: string,
-    onBlur?: () => void,
-    onFocus?: () => void
-  }
+}
 
 export class Field extends Block {
     public static componentName = 'Field';
 
     constructor(props: FieldProps) {
-        super({
-            ...props,
-            events: {
-                blur: (e: Event): void => {
-                    console.log('blur');
-                },
-                focus: (e: Event): void => {
-                    console.log('focus');
-                    const { target } = e;
-                    const { name, value } = target as HTMLInputElement;
+        super(props);
+    }
 
-                    const errorText = validateForm(name, value);
+    _addEvents(): void {
+        const inputs = this._element.querySelectorAll('input');
 
-                    console.log(errorText);
-
-                    if (errorText) {
-                        const valid = false;
-                        // this.setProps({
-                        //     errorText,
-                        //     valid
-                        // });
-
-                        console.log(this.props.errorText);
-                    }
-                },
-            },
+        inputs.forEach((input) => {
+            input.addEventListener('input', (e) => {
+                const target = e.target as HTMLInputElement;
+                checkFormFieldError(target);
+            });
         });
+
+        super._addEvents();
     }
 
     render(): string {
@@ -53,12 +39,11 @@ export class Field extends Block {
                         placeholder=" " 
                         name="{{ name }}" 
                         type="{{ type }}" 
-                        value="{{ value }}" 
+                        {{#if (eq readonly true)}} readonly {{/if}}
+                        {{#if value }} value="{{ value }}" {{/if}}
                         >
                     <span>{{ text }}</span>
-                    {{#if errorText }}
-                        <div class="form__error">{{ errorText }}</div>
-                    {{/if}}
+                    <div class="form__error"></div>
                 </label>
             </div>
         `;

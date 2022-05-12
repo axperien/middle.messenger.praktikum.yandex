@@ -129,13 +129,7 @@ export default class Block<P = any> {
 
         this._element = newElement as HTMLElement;
 
-        let input = null;
-
-        if (this._element) {
-            input = this._element.querySelector('input.form__input') as HTMLInputElement;
-        }
-
-        this._addEvents(input);
+        this._addEvents();
     }
 
     protected render(): string {
@@ -195,7 +189,7 @@ export default class Block<P = any> {
         });
     }
 
-    _addEvents(elem: HTMLInputElement | null) {
+    _addEvents() {
         // eslint-disable-next-line prefer-destructuring
         const events: Record<string, () => void> = (this.props as any).events;
 
@@ -204,11 +198,7 @@ export default class Block<P = any> {
         }
 
         Object.entries(events).forEach(([event, listener]) => {
-            if (elem) {
-                elem!.addEventListener(event, listener);
-            } else {
-                this._element!.addEventListener(event, listener);
-            }
+            this._element!.addEventListener(event, listener);
         });
     }
 

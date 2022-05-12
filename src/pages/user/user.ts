@@ -53,7 +53,7 @@ export class UserPage extends Block {
                     {
                         type: 'tel',
                         name: 'phone',
-                        value: '+7 (909) 967 30 30',
+                        value: '+7 909 967 30 30',
                         text: 'Телефон',
                         readonly: true,
                     },
@@ -190,7 +190,7 @@ export class UserPage extends Block {
                     {
                         type: 'tel',
                         name: 'phone',
-                        value: '+7 (909) 967 30 30',
+                        value: '+7 909 967 30 30',
                         text: 'Телефон',
                     },
                 ],

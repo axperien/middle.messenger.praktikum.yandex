@@ -1,5 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 import Block from '../../core/Block';
-import validateForm from '../../core/validateForm';
+import { checkUserFieldError } from '../../core/validator';
 
 interface UserFieldProps {
     type: string,
@@ -9,8 +10,6 @@ interface UserFieldProps {
     errorText?: string,
     value?: string,
     readonly?: boolean,
-    onBlur?: () => void,
-    onFocus?: () => void
   }
 
 export class UserField extends Block {
@@ -30,6 +29,19 @@ export class UserField extends Block {
         });
     }
 
+    _addEvents(): void {
+        const inputs = this._element.querySelectorAll('input');
+
+        inputs.forEach((input) => {
+            input.addEventListener('input', (e) => {
+                const target = e.target as HTMLInputElement;
+                checkUserFieldError(target);
+            });
+        });
+
+        super._addEvents();
+    }
+
     render(): string {
         return `
             <div class="user__field">
@@ -44,6 +56,7 @@ export class UserField extends Block {
                         {{#if placeholder }} placeholder="{{ placeholder }}" {{/if}}
                         {{#if (eq type 'password') }} autocomplete="new-password" {{/if}}
                         >
+                    <div class="user__error"></div>
                 </label>
             </div>
         `;

@@ -32,7 +32,7 @@
     &__field {
         &:not(:last-child) {
             border-bottom: 1px solid $c-gray-light;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
     }
 
@@ -40,11 +40,30 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
 
         span {
             width: 220px;
             flex-shrink: 0;
             font-weight: bold;
+        }
+    }
+
+    &__error {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        text-align: right;
+        margin-top: 2px;
+        font-size: 8px;
+        color: #FF2F2F;
+        // opacity: 0;
+        pointer-events: none;
+        transition: $transition;
+        .is-invalid & {
+            opacity: 1;
+            margin-top: 7px;
         }
     }
 
