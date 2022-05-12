@@ -204,8 +204,9 @@ export default class Block<P = any> {
 
     _compile(): DocumentFragment {
         const fragment = document.createElement('template');
+        const renderer = this.render();
 
-        const template = Handlebars.compile(this.render());
+        const template = Handlebars.compile(renderer);
         fragment.innerHTML = template({
             ...this.state, ...this.props, children: this.children, refs: this.refs,
         });
