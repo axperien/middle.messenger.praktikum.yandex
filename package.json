@@ -12,7 +12,7 @@
     "stylelint": "stylelint '**/*.{css,scss}'",
     "stylelint:fix": "stylelint '**/*{css,scss}' --fix",
     "start": "npm run build && node server.js",
-    "build": "parcel build index.html --log-level verbose",
+    "build": "parcel build index.html --log-level info",
     "dev": "parcel index.html -p 3000 --no-cache --open chrome"
   },
   "devDependencies": {
