@@ -55,7 +55,7 @@ export class UserPage extends Block {
         }
     }
 
-    render() {
+    render(): string {
         return `
             <div class="user">
                 {{{ BackUrl url=back.url }}}

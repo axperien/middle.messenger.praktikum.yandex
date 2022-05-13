@@ -82,7 +82,7 @@ export class ChatsPage extends Block {
         });
     }
 
-    render() {
+    render(): string {
         return `
             <div class="chats">
                 <aside class="chats__sidebar">

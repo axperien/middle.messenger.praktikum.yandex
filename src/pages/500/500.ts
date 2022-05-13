@@ -5,7 +5,7 @@ export class Page500 extends Block {
         super({ ...props, code: '500', text: 'Кажется что-то пошло не так... :(' });
     }
 
-    render() {
+    render(): string {
         return `
             {{{ Error code=code text=text }}}
         `;

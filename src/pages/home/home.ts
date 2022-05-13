@@ -1,7 +1,7 @@
 import Block from '../../core/Block';
 
 export class HomePage extends Block {
-    render() {
+    render(): string {
         return `
             <nav>
                 <ul class="navigation">

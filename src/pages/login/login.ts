@@ -9,7 +9,7 @@ export class LoginPage extends Block {
             });
     }
 
-    render():string {
+    render(): string {
         return `
             {{{ Form title=title fields=fields button=button link=link }}}
         `;

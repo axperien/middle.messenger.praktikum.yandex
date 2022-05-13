@@ -5,7 +5,7 @@ export class Page404 extends Block {
         super({ ...props, code: '404', text: 'Кажется такой странички нет... ;(' });
     }
 
-    render() {
+    render(): string {
         return `
             {{{ Error code=code text=text }}}
         `;
