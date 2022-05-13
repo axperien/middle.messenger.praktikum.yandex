@@ -159,15 +159,6 @@
         ]
     },
     "user_settings": {
-        "name": "Иван",
-        "back": {
-            "url": "/chats"
-        },
-        "avatar": {
-            "image": "./images/avatar1.png",
-            "image_x2": "./images/avatar1@2x.png",
-            "overlay_text": "Поменять аватар"
-        },
         "fields": [{
                 "type": "email",
                 "name": "email",
@@ -212,15 +203,6 @@
         "links": []
     },
     "user_password": {
-        "name": "Иван",
-        "back": {
-            "url": "/chats"
-        },
-        "avatar": {
-            "image": "./images/avatar1.png",
-            "image_x2": "./images/avatar1@2x.png",
-            "overlay_text": "Поменять аватар"
-        },
         "fields": [{
                 "type": "password",
                 "name": "oldPassword",
