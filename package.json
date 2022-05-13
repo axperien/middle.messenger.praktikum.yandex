@@ -12,7 +12,7 @@
     "stylelint": "stylelint '**/*.{css,scss}'",
     "stylelint:fix": "stylelint '**/*{css,scss}' --fix",
     "start": "npm run build && node server.js",
-    "build": "parcel build index.html --log-level info",
+    "build": "parcel build index.html",
     "dev": "parcel index.html -p 3000 --no-cache --open chrome"
   },
   "devDependencies": {
@@ -20,6 +20,7 @@
     "@parcel/transformer-sass": "~2.4.1",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
+    "apply-decorated-descriptor": "^1.0.0",
     "autoprefixer": "~9.8.6",
     "eslint": "^8.15.0",
     "eslint-config-airbnb": "^19.0.4",
