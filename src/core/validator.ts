@@ -51,38 +51,21 @@ const validateForm = (name:string, value: string):string => {
     return errorText;
 };
 
-const checkFormFieldError = (field: HTMLInputElement) => {
+const checkFormFieldError = (field: HTMLInputElement, prefix: string) => {
     const { name, value } = field;
     const errorText = validateForm(name, value);
-    const label = field.closest('.form__label');
-    const errorBox = label.querySelector('.form__error');
+    const label = field.closest(`.${prefix}__label`);
+    const errorBox = (label) ? label.querySelector(`.${prefix}__error`) : null;
 
     if (errorBox) {
         if (errorText) {
             errorBox.textContent = errorText;
-            field.classList.add('form__input--error');
+            field.classList.add(`${prefix}__input--error`);
         } else {
             errorBox.textContent = '';
-            field.classList.remove('form__input--error');
+            field.classList.remove(`${prefix}__input--error`);
         }
     }
 };
 
-const checkUserFieldError = (field: HTMLInputElement) => {
-    const { name, value } = field;
-    const errorText = validateForm(name, value);
-    const label = field.closest('.user__label');
-    const errorBox = label.querySelector('.user__error');
-
-    if (errorBox) {
-        if (errorText) {
-            errorBox.textContent = errorText;
-            field.classList.add('user__input--error');
-        } else {
-            errorBox.textContent = '';
-            field.classList.remove('user__input--error');
-        }
-    }
-};
-
-export { validateForm, checkFormFieldError, checkUserFieldError };
+export { validateForm, checkFormFieldError };

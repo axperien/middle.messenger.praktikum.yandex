@@ -1,7 +1,7 @@
 import Block from '../../core/Block';
 
 export class Page404 extends Block {
-    constructor(props) {
+    constructor(props: any) {
         super({ ...props, code: '404', text: 'Кажется такой странички нет... ;(' });
     }
 

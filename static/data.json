@@ -94,8 +94,8 @@
         },
         "avatar": {
             "image": "./images/avatar1.png",
-            "image_x2": "./images/avatar1@2x.png",
-            "overlay_text": "Поменять аватар"
+            "imageX2": "./images/avatar1@2x.png",
+            "overlayText": "Поменять аватар"
         },
         "fields": [{
                 "type": "email",
@@ -243,7 +243,7 @@
                     "name": "Майкл Патриот",
                     "avatar": {
                         "image": "../images/avatar2.png",
-                        "image_x2": "../images/avatar2@2x.png"
+                        "imageX2": "../images/avatar2@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -258,7 +258,7 @@
                     "name": "Никита Ворожея",
                     "avatar": {
                         "image": "../images/avatar3.png",
-                        "image_x2": "../images/avatar3@2x.png"
+                        "imageX2": "../images/avatar3@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -273,7 +273,7 @@
                     "name": "Володимер ОченьДлиннаяФамилия",
                     "avatar": {
                         "image": "../images/avatar4.png",
-                        "image_x2": "../images/avatar4@2x.png"
+                        "imageX2": "../images/avatar4@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -288,7 +288,7 @@
                     "name": "Алексей Александрович",
                     "avatar": {
                         "image": "../images/avatar5.png",
-                        "image_x2": "../images/avatar5@2x.png"
+                        "imageX2": "../images/avatar5@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -303,7 +303,7 @@
                     "name": "Ангелиночка ❤️",
                     "avatar": {
                         "image": "../images/avatar6.png",
-                        "image_x2": "../images/avatar6@2x.png"
+                        "imageX2": "../images/avatar6@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -318,7 +318,7 @@
                     "name": "Ирина Анатольевна",
                     "avatar": {
                         "image": "../images/avatar7.png",
-                        "image_x2": "../images/avatar7@2x.png"
+                        "imageX2": "../images/avatar7@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -333,7 +333,7 @@
                     "name": "Серега Пятихатка",
                     "avatar": {
                         "image": "../images/avatar8.png",
-                        "image_x2": "../images/avatar8@2x.png"
+                        "imageX2": "../images/avatar8@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -348,7 +348,7 @@
                     "name": "Майкл Патриот",
                     "avatar": {
                         "image": "../images/avatar2.png",
-                        "image_x2": "../images/avatar2@2x.png"
+                        "imageX2": "../images/avatar2@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -363,7 +363,7 @@
                     "name": "Никита Ворожея",
                     "avatar": {
                         "image": "../images/avatar3.png",
-                        "image_x2": "../images/avatar3@2x.png"
+                        "imageX2": "../images/avatar3@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -378,7 +378,7 @@
                     "name": "Володимер ОченьДлиннаяФамилия",
                     "avatar": {
                         "image": "../images/avatar4.png",
-                        "image_x2": "../images/avatar4@2x.png"
+                        "imageX2": "../images/avatar4@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -393,7 +393,7 @@
                     "name": "Алексей Александрович",
                     "avatar": {
                         "image": "../images/avatar5.png",
-                        "image_x2": "../images/avatar5@2x.png"
+                        "imageX2": "../images/avatar5@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -408,7 +408,7 @@
                     "name": "Ангелиночка ❤️",
                     "avatar": {
                         "image": "../images/avatar6.png",
-                        "image_x2": "../images/avatar6@2x.png"
+                        "imageX2": "../images/avatar6@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -423,7 +423,7 @@
                     "name": "Ирина Анатольевна",
                     "avatar": {
                         "image": "../images/avatar7.png",
-                        "image_x2": "../images/avatar7@2x.png"
+                        "imageX2": "../images/avatar7@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -438,7 +438,7 @@
                     "name": "Серега Пятихатка",
                     "avatar": {
                         "image": "../images/avatar8.png",
-                        "image_x2": "../images/avatar8@2x.png"
+                        "imageX2": "../images/avatar8@2x.png"
                     }
                 },
                 "lastMessage": {

@@ -1,12 +1,6 @@
 import Block from '../../core/Block';
 import './button.scss';
-
-interface ButtonProps {
-    cls: string,
-    text: string;
-    type: string,
-    onClick: () => void
-}
+import { ButtonProps } from '../../core/types';
 
 export class Button extends Block {
     public static componentName = 'Button';
@@ -14,7 +8,7 @@ export class Button extends Block {
     constructor({
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         text, cls, type = 'button', onClick = () => {},
-    }: ButtonProps) {
+    } : ButtonProps) {
         super({
             text, cls, type, events: { click: onClick },
         });

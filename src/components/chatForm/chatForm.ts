@@ -1,15 +1,11 @@
 import Block from '../../core/Block';
 import './chatForm.scss';
+import { ChatFormProps } from '../../core/types';
 
-interface ChatFormProps {
-    name: string,
-    avatar: { image: string, image_x2: string }
-}
-
-export class ChatForm extends Block {
+export class ChatForm extends Block<ChatFormProps> {
     public static componentName = 'ChatForm';
 
-    constructor(props: ChatFormProps) {
+    constructor(props:ChatFormProps) {
         super({
             ...props,
             events: {

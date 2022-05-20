@@ -1,14 +1,8 @@
 import Block from '../../core/Block';
 import './link.scss';
+import { LinkProps } from '../../core/types';
 
-interface LinkProps {
-    cls: string,
-    text: string;
-    url: string,
-    onClick: () => void
-  }
-
-export class Link extends Block {
+export class Link extends Block<LinkProps> {
     public static componentName = 'Link';
 
     constructor({
@@ -16,7 +10,7 @@ export class Link extends Block {
         text, cls, url, onClick = () => {},
     }: LinkProps) {
         super({
-            text, cls, url, events: { click: onClick },
+            text, cls, url, onClick, events: { click: onClick },
         });
     }
 

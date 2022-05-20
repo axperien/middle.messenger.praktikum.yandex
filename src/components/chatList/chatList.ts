@@ -1,16 +1,7 @@
 import Block from '../../core/Block';
+import { ChatListProps } from '../../core/types';
 
-interface ChatUser {
-    name: string,
-    avatar: { image: string, image_x2: string }
-}
-
-interface ChatListProps {
-    chats: Array<{ id: number, user: ChatUser, lastMessage: Record<'time' | 'text' | 'from', string> }>,
-    onClick: () => void
-}
-
-export class ChatList extends Block {
+export class ChatList extends Block<ChatListProps> {
     public static componentName = 'ChatList';
 
     constructor({
@@ -20,6 +11,7 @@ export class ChatList extends Block {
     }: ChatListProps) {
         super({
             chats,
+            onClick,
             events: {
                 click: onClick,
             },

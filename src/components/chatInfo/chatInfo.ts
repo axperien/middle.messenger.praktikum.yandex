@@ -1,17 +1,9 @@
 import Block from '../../core/Block';
 import './chatInfo.scss';
+import { ChatInfoProps } from '../../core/types';
 
-interface ChatInfoProps {
-    name: string,
-    avatar: { image: string, image_x2: string }
-}
-
-export class ChatInfo extends Block {
+export class ChatInfo extends Block<ChatInfoProps> {
     public static componentName = 'ChatInfo';
-
-    constructor(props: ChatInfoProps) {
-        super(props);
-    }
 
     render(): string {
         return `

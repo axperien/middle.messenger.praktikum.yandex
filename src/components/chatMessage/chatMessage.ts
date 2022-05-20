@@ -1,19 +1,9 @@
 import Block from '../../core/Block';
 import './chatMessage.scss';
+import { ChatMessageProps } from '../../core/types';
 
-interface ChatMessageProps {
-    from: string,
-    text: string,
-    image: string,
-    time: string
-}
-
-export class ChatMessage extends Block {
+export class ChatMessage extends Block<ChatMessageProps> {
     public static componentName = 'ChatMessage';
-
-    constructor(props: ChatMessageProps) {
-        super(props);
-    }
 
     render(): string {
         return `

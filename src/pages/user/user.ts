@@ -15,9 +15,9 @@ export class UserPage extends Block {
     }
 
     _addEvents(): void {
-        const linkUserSettings = this._element.querySelector('.user__link--settings');
-        const linkUserPassword = this._element.querySelector('.user__link--password');
-        const buttonSave = this._element.querySelector('.button--user_save');
+        const linkUserSettings = this._element?.querySelector('.user__link--settings');
+        const linkUserPassword = this._element?.querySelector('.user__link--password');
+        const buttonSave = this._element?.querySelector('.button--user_save');
 
         if (linkUserSettings) {
             linkUserSettings.addEventListener('click', (e: Event) => {
@@ -40,7 +40,7 @@ export class UserPage extends Block {
 
                 if (form) {
                     const formData = new FormData(form);
-                    const data = {};
+                    const data : { [key: string]: any } = {};
 
                     // eslint-disable-next-line no-restricted-syntax
                     for (const [name, value] of formData) {
@@ -63,8 +63,8 @@ export class UserPage extends Block {
                     {{{ 
                         Avatar 
                             image=avatar.image
-                            image_x2=avatar.image_x2
-                            overlay_text=avatar.overlay_text 
+                            imageX2=avatar.imageX2
+                            overlayText=avatar.overlayText 
                     }}}
                     {{#if name }}
                         <h3 class="user__name">{{ name }}</h3>

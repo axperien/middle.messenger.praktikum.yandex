@@ -1,31 +1,22 @@
 /* eslint-disable no-underscore-dangle */
 import Block from '../../core/Block';
 import { checkFormFieldError } from '../../core/validator';
+import { FieldProps } from '../../core/types';
 
-interface FieldProps {
-    type: string,
-    name: string,
-    text: string,
-    errorText?: string,
-    value?: string,
-}
-
-export class Field extends Block {
+export class Field extends Block<FieldProps> {
     public static componentName = 'Field';
 
-    constructor(props: FieldProps) {
-        super(props);
-    }
-
     _addEvents(): void {
-        const inputs = this._element.querySelectorAll('input');
+        const inputs = this._element?.querySelectorAll('input');
 
-        inputs.forEach((input) => {
-            input.addEventListener('input', (e) => {
-                const target = e.target as HTMLInputElement;
-                checkFormFieldError(target);
+        if (inputs) {
+            inputs.forEach((input) => {
+                input.addEventListener('input', (e) => {
+                    const target = e.target as HTMLInputElement;
+                    checkFormFieldError(target, 'form');
+                });
             });
-        });
+        }
 
         super._addEvents();
     }

@@ -1,16 +1,9 @@
 import Block from '../../core/Block';
 import './backUrl.scss';
+import { BackUrlProps } from '../../core/types';
 
-interface BackUrlProps {
-    url: string
-}
-
-export class BackUrl extends Block {
+export class BackUrl extends Block<BackUrlProps> {
     public static componentName = 'BackUrl';
-
-    constructor(props: BackUrlProps) {
-        super(props);
-    }
 
     render(): string {
         return `

@@ -1,7 +1,7 @@
 import Block from '../../core/Block';
 
 export class Page500 extends Block {
-    constructor(props) {
+    constructor(props: any) {
         super({ ...props, code: '500', text: 'Кажется что-то пошло не так... :(' });
     }
 

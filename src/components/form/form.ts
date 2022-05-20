@@ -2,30 +2,16 @@
 import Block from '../../core/Block';
 import './form.scss';
 import { checkFormFieldError } from '../../core/validator';
+import { FormProps } from '../../core/types';
 
-interface FormProps {
-    title: string,
-    fields?: [],
-    button?: {
-        cls: string,
-        text: string
-    },
-    link?: {
-        url: string,
-        cls: string,
-        text: string
-    },
-    onSubmit: () => void
-}
-
-export class Form extends Block {
+export class Form extends Block<FormProps> {
     public static componentName = 'Form';
 
     constructor({
         title, fields, button, link, onSubmit,
     }: FormProps) {
         super({
-            title, fields, button, link, events: { onSubmit },
+            title, fields, button, link, onSubmit, events: { onSubmit },
         });
     }
 
@@ -51,7 +37,7 @@ export class Form extends Block {
                 }
 
                 const formData = new FormData(form);
-                const data = {};
+                const data : { [key: string]: any } = {};
 
                 // eslint-disable-next-line no-restricted-syntax
                 for (const [name, value] of formData) {

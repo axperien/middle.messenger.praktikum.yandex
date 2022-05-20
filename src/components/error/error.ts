@@ -1,17 +1,9 @@
 import Block from '../../core/Block';
 import './error.scss';
+import { ErrorProps } from '../../core/types';
 
-interface ErrorProps {
-    code: string,
-    text: string
-  }
-
-export class Error extends Block {
+export class Error extends Block<ErrorProps> {
     public static componentName = 'Error';
-
-    constructor(props: ErrorProps) {
-        super(props);
-    }
 
     render(): string {
         return `

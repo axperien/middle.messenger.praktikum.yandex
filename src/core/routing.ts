@@ -7,7 +7,7 @@ import page404 from '../pages/404';
 import pageUser from '../pages/user';
 import pageChats from '../pages/chats';
 
-const pages = {
+const pages: any = {
     home: {
         title: 'Главная страница',
         id: 'home',

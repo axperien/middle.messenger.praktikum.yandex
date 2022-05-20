@@ -1,18 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 import Block from '../../core/Block';
-import { checkUserFieldError } from '../../core/validator';
+import { checkFormFieldError } from '../../core/validator';
+import { UserFieldProps } from '../../core/types';
 
-interface UserFieldProps {
-    type: string,
-    name: string,
-    text: string,
-    placeholder: string,
-    errorText?: string,
-    value?: string,
-    readonly?: boolean,
-  }
-
-export class UserField extends Block {
+export class UserField extends Block<UserFieldProps> {
     public static componentName = 'UserField';
 
     constructor(props: UserFieldProps) {
@@ -30,14 +21,16 @@ export class UserField extends Block {
     }
 
     _addEvents(): void {
-        const inputs = this._element.querySelectorAll('input');
+        const inputs = this._element?.querySelectorAll('input');
 
-        inputs.forEach((input) => {
-            input.addEventListener('input', (e) => {
-                const target = e.target as HTMLInputElement;
-                checkUserFieldError(target);
+        if (inputs) {
+            inputs.forEach((input) => {
+                input.addEventListener('input', (e) => {
+                    const target = e.target as HTMLInputElement;
+                    checkFormFieldError(target, 'user');
+                });
             });
-        });
+        }
 
         super._addEvents();
     }
