@@ -1,5 +1,6 @@
 ## Ссылки
 - [Pull Request Sprint_1](https://github.com/axperien/middle.messenger.praktikum.yandex/pull/2)
+- [Pull Request Sprint_2](https://github.com/axperien/middle.messenger.praktikum.yandex/pull/3)
 - [Макеты в Figma](https://www.figma.com/file/KjNp2P9WNMh5Ns3LtSiv7B/Messenger-Yandex?node-id=0%3A1)
 - [Проект на Netlify](https://playful-dasik-ddf843.netlify.app/)
 

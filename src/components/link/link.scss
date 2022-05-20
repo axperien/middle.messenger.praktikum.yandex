@@ -1,0 +1,21 @@
+@import "../../scss/global/variables";
+
+.link {
+    display: inline-block;
+    color: $c-violet;
+    font-weight: bold;
+    font-size: 11px;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &--red {
+        color: #f00;
+    }
+}
+
+.link_profile {
+    color: $c-gray;
+}

@@ -1,0 +1,12 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-rational-order", "stylelint-prettier/recommended"],
+  "plugins": ["stylelint-order", "stylelint-scss"],
+  "rules": {
+    "color-hex-case": "lower",
+    "declaration-empty-line-before": null,
+    "indentation": 4
+  },
+  "ignoreFiles": [
+    "dist/*"
+  ]
+} 

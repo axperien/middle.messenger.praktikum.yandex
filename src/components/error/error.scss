@@ -1,0 +1,19 @@
+.error {
+    text-align: center;
+
+    &__code {
+        margin: 0 0 20px;
+        font-weight: bold;
+        font-size: 50px;
+        line-height: 1.1;
+    }
+
+    &__text {
+        margin: 0;
+        font-size: 20px;
+    }
+
+    &__link {
+        margin-top: 70px;
+    }
+}
