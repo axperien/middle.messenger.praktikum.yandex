@@ -1,12 +1,12 @@
 import { queryStringify } from './helpers';
 import { HTTPTransportOptions } from './types';
 
-export const METHODS = {
-    GET: 'GET',
-    POST: 'POST',
-    PUT: 'PUT',
-    DELETE: 'DELETE',
-};
+export enum Methods {
+    GET = 'GET',
+    POST = 'POST',
+    PUT = 'PUT',
+    DELETE = 'DELETE',
+}
 
 export class HTTPTransport {
     static get = (url: string, options:HTTPTransportOptions) => {
@@ -14,23 +14,23 @@ export class HTTPTransport {
 
         return this.request(url + data, {
             ...options,
-            method: METHODS.GET,
+            method: Methods.GET,
         }, options.timeout);
     };
 
     static put = (url:string, options:HTTPTransportOptions) => this.request(url, {
         ...options,
-        method: METHODS.PUT,
+        method: Methods.PUT,
     }, options.timeout);
 
     static post = (url:string, options:HTTPTransportOptions) => this.request(url, {
         ...options,
-        method: METHODS.POST,
+        method: Methods.POST,
     }, options.timeout);
 
     static delete = (url:string, options:HTTPTransportOptions) => this.request(url, {
         ...options,
-        method: METHODS.DELETE,
+        method: Methods.DELETE,
     }, options.timeout);
 
     // eslint-disable-next-line class-methods-use-this
@@ -55,7 +55,7 @@ export class HTTPTransport {
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
-            if (method === METHODS.GET || !data) {
+            if (method === Methods.GET || !data) {
                 xhr.send();
             } else {
                 xhr.send(JSON.stringify(data));

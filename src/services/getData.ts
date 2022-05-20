@@ -1,7 +1,7 @@
-import { HTTPTransport, METHODS } from '../core/HTTPTransport';
+import { HTTPTransport, Methods } from '../core/HTTPTransport';
 
 export const getData = async (page: string) => {
-    const method = METHODS.GET;
+    const method = Methods.GET;
     const url = './data.json';
 
     const request = HTTPTransport.request(url, {
