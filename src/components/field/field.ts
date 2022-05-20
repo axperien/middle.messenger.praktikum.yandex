@@ -7,14 +7,12 @@ export class Field extends Block<FieldProps> {
     public static componentName = 'Field';
 
     _addEvents(): void {
-        const inputs = this._element?.querySelectorAll('input');
+        const input = this._element?.querySelector('input');
 
-        if (inputs) {
-            inputs.forEach((input) => {
-                input.addEventListener('input', (e) => {
-                    const target = e.target as HTMLInputElement;
-                    checkFormFieldError(target, 'form');
-                });
+        if (input) {
+            input.addEventListener('input', (e) => {
+                const target = e.target as HTMLInputElement;
+                checkFormFieldError(target, 'form');
             });
         }
 
