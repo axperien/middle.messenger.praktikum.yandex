@@ -1,20 +1,249 @@
 {
-    "error_404": {
-        "error_code": 404,
-        "error_text": "Кажется такой странички нет... ;("
+    "login": {
+        "title": "Вход",
+        "fields": [{
+                "type": "text",
+                "name": "login",
+                "text": "Логин"
+            },
+            {
+                "type": "password",
+                "name": "password",
+                "text": "Пароль"
+            }
+        ],
+        "button": {
+            "cls": "form__button",
+            "text": "Войти",
+            "type": "submit"
+        },
+        "link": {
+            "cls": "",
+            "text": "Нет аккаунта?",
+            "url": "/register"
+        }
     },
-    "error_500": {
-        "error_code": 500,
-        "error_text": "Кажется что-то пошло не так... :("
+    "register": {
+        "title": "Регистрация",
+        "fields": {
+            "email": {
+                "type": "email",
+                "name": "email",
+                "text": "Почта",
+                "value": "",
+                "valid": true
+            },
+            "login": {
+                "type": "text",
+                "name": "login",
+                "text": "Логин",
+                "value": "",
+                "valid": true
+            },
+            "first_name": {
+                "type": "text",
+                "name": "first_name",
+                "text": "Имя",
+                "value": "",
+                "valid": true
+            },
+            "second_name": {
+                "type": "text",
+                "name": "second_name",
+                "text": "Фамилия",
+                "value": "",
+                "valid": true
+            },
+            "phone": {
+                "type": "tel",
+                "name": "phone",
+                "text": "Телефон",
+                "value": "",
+                "valid": true
+            },
+            "password": {
+                "type": "password",
+                "name": "password",
+                "text": "Пароль",
+                "value": "",
+                "valid": true
+            },
+            "password_repeat": {
+                "type": "password",
+                "name": "password_repeat",
+                "text": "Пароль еще раз",
+                "value": "",
+                "valid": true
+            }
+        },
+        "button": {
+            "cls": "form__button",
+            "text": "Зарегистрироваться",
+            "type": "submit"
+        },
+        "link": {
+            "cls": "",
+            "text": "Войти",
+            "url": "/login"
+        }
+    },
+    "user_default": {
+        "name": "Иван",
+        "back": {
+            "url": "/chats"
+        },
+        "avatar": {
+            "image": "./images/avatar1.png",
+            "imageX2": "./images/avatar1@2x.png",
+            "overlayText": "Поменять аватар"
+        },
+        "fields": [{
+                "type": "email",
+                "name": "email",
+                "value": "pochta@yandex.ru",
+                "text": "Почта",
+                "readonly": true
+            },
+            {
+                "type": "text",
+                "name": "login",
+                "value": "ivanivanov",
+                "text": "Логин",
+                "readonly": true
+            },
+            {
+                "type": "text",
+                "name": "first_name",
+                "value": "Иван",
+                "text": "Имя",
+                "readonly": true
+            },
+            {
+                "type": "text",
+                "name": "second_name",
+                "value": "Иванов",
+                "text": "Фамилия",
+                "readonly": true
+            },
+            {
+                "type": "text",
+                "name": "display_name",
+                "value": "Иван",
+                "text": "Имя в чате",
+                "readonly": true
+            },
+            {
+                "type": "tel",
+                "name": "phone",
+                "value": "+7 909 967 30 30",
+                "text": "Телефон",
+                "readonly": true
+            }
+        ],
+        "buttons": [],
+        "links": [{
+                "url": "#",
+                "text": "Изменить данные",
+                "cls": "user__link user__link--settings"
+            },
+            {
+                "url": "#",
+                "text": "Изменить пароль",
+                "cls": "user__link user__link--password"
+            },
+            {
+                "url": "/login",
+                "text": "Выйти",
+                "cls": "link--red user__link"
+            }
+        ]
+    },
+    "user_settings": {
+        "fields": [{
+                "type": "email",
+                "name": "email",
+                "value": "pochta@yandex.ru",
+                "text": "Почта"
+            },
+            {
+                "type": "text",
+                "name": "login",
+                "value": "ivanivanov",
+                "text": "Логин"
+            },
+            {
+                "type": "text",
+                "name": "first_name",
+                "value": "Иван",
+                "text": "Имя"
+            },
+            {
+                "type": "text",
+                "name": "second_name",
+                "value": "Иванов",
+                "text": "Фамилия"
+            },
+            {
+                "type": "text",
+                "name": "display_name",
+                "value": "Иван",
+                "text": "Имя в чате"
+            },
+            {
+                "type": "tel",
+                "name": "phone",
+                "value": "+7 909 967 30 30",
+                "text": "Телефон"
+            }
+        ],
+        "buttons": [{
+            "cls": "button--user_save",
+            "text": "Сохранить"
+        }],
+        "links": []
+    },
+    "user_password": {
+        "fields": [{
+                "type": "password",
+                "name": "oldPassword",
+                "text": "Старый пароль",
+                "errorText": "Неверный пароль",
+                "placeholder": "•••••••••"
+            },
+            {
+                "type": "password",
+                "name": "newPassword",
+                "text": "Новый пароль",
+                "errorText": "Неверный пароль",
+                "placeholder": "•••••••••••"
+            },
+            {
+                "type": "password",
+                "name": "newPassword_repeat",
+                "text": "Повторите новый пароль",
+                "errorText": "Неверный пароль",
+                "placeholder": "•••••••••••"
+            }
+        ],
+        "buttons": [{
+            "cls": "button--user_save",
+            "text": "Сохранить"
+        }],
+        "links": []
     },
     "chats": {
-        "dialogs": [{
+        "link": {
+            "text": "Профиль ᐳ",
+            "url": "/user",
+            "cls": "link_profile"
+        },
+        "chats": [{
                 "id": 0,
                 "user": {
                     "name": "Майкл Патриот",
                     "avatar": {
                         "image": "../images/avatar2.png",
-                        "image_x2": "../images/avatar2@2x.png"
+                        "imageX2": "../images/avatar2@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -29,7 +258,7 @@
                     "name": "Никита Ворожея",
                     "avatar": {
                         "image": "../images/avatar3.png",
-                        "image_x2": "../images/avatar3@2x.png"
+                        "imageX2": "../images/avatar3@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -44,7 +273,7 @@
                     "name": "Володимер ОченьДлиннаяФамилия",
                     "avatar": {
                         "image": "../images/avatar4.png",
-                        "image_x2": "../images/avatar4@2x.png"
+                        "imageX2": "../images/avatar4@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -59,7 +288,7 @@
                     "name": "Алексей Александрович",
                     "avatar": {
                         "image": "../images/avatar5.png",
-                        "image_x2": "../images/avatar5@2x.png"
+                        "imageX2": "../images/avatar5@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -74,7 +303,7 @@
                     "name": "Ангелиночка ❤️",
                     "avatar": {
                         "image": "../images/avatar6.png",
-                        "image_x2": "../images/avatar6@2x.png"
+                        "imageX2": "../images/avatar6@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -89,7 +318,7 @@
                     "name": "Ирина Анатольевна",
                     "avatar": {
                         "image": "../images/avatar7.png",
-                        "image_x2": "../images/avatar7@2x.png"
+                        "imageX2": "../images/avatar7@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -104,12 +333,12 @@
                     "name": "Серега Пятихатка",
                     "avatar": {
                         "image": "../images/avatar8.png",
-                        "image_x2": "../images/avatar8@2x.png"
+                        "imageX2": "../images/avatar8@2x.png"
                     }
                 },
                 "lastMessage": {
                     "time": "8 января 2021",
-                    "text": "Товарищи! начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки системы обучения кадров, соответствует насущным потребностям. ",
+                    "text": "Товарищи! начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки системы обучения кадров, соответствует насущным потребностям.",
                     "from": "user"
                 }
             },
@@ -119,7 +348,7 @@
                     "name": "Майкл Патриот",
                     "avatar": {
                         "image": "../images/avatar2.png",
-                        "image_x2": "../images/avatar2@2x.png"
+                        "imageX2": "../images/avatar2@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -134,7 +363,7 @@
                     "name": "Никита Ворожея",
                     "avatar": {
                         "image": "../images/avatar3.png",
-                        "image_x2": "../images/avatar3@2x.png"
+                        "imageX2": "../images/avatar3@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -149,7 +378,7 @@
                     "name": "Володимер ОченьДлиннаяФамилия",
                     "avatar": {
                         "image": "../images/avatar4.png",
-                        "image_x2": "../images/avatar4@2x.png"
+                        "imageX2": "../images/avatar4@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -164,7 +393,7 @@
                     "name": "Алексей Александрович",
                     "avatar": {
                         "image": "../images/avatar5.png",
-                        "image_x2": "../images/avatar5@2x.png"
+                        "imageX2": "../images/avatar5@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -179,7 +408,7 @@
                     "name": "Ангелиночка ❤️",
                     "avatar": {
                         "image": "../images/avatar6.png",
-                        "image_x2": "../images/avatar6@2x.png"
+                        "imageX2": "../images/avatar6@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -194,7 +423,7 @@
                     "name": "Ирина Анатольевна",
                     "avatar": {
                         "image": "../images/avatar7.png",
-                        "image_x2": "../images/avatar7@2x.png"
+                        "imageX2": "../images/avatar7@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -209,7 +438,7 @@
                     "name": "Серега Пятихатка",
                     "avatar": {
                         "image": "../images/avatar8.png",
-                        "image_x2": "../images/avatar8@2x.png"
+                        "imageX2": "../images/avatar8@2x.png"
                     }
                 },
                 "lastMessage": {
@@ -218,110 +447,6 @@
                     "from": "user"
                 }
             }
-        ],
-        "link": {
-            "text": "Профиль ᐳ",
-            "url": "/user",
-            "cls": "link_profile"
-        }
-    },
-    "login": {
-        "form": {
-            "title": "Вход",
-            "fields": [
-                {
-                    "name": "login",
-                    "placeholder": "Логин",
-                    "error_text": "Неверный логин",
-                    "type": "text",
-                    "required": "true",
-                    "minlength": 3
-                },
-                {
-                    "name": "password",
-                    "placeholder": "Пароль",
-                    "error_text": "Неверный пароль",
-                    "type": "password",
-                    "required": "true"
-                }
-            ]            
-        },
-        "button": {
-            "text": "Авторизоваться",
-            "cls": "form__button"
-        },
-        "link": {
-            "text": "Нет аккаунта?",
-            "url": "/register"
-        }
-    },
-    "register": {
-        "form": {
-            "title": "Регистрация",
-            "fields": [
-                {
-                    "name": "email",
-                    "placeholder": "Почта",
-                    "error_text": "Неверный email",
-                    "type": "email",
-                    "required": "true"
-                },
-                {
-                    "name": "login",
-                    "placeholder": "Логин",
-                    "error_text": "Минимум 3 символа",
-                    "type": "text",
-                    "required": "true",
-                    "minlength": 3
-                },                
-                {
-                    "name": "first_name",
-                    "placeholder": "Имя",
-                    "error_text": "Минимум 3 символа",
-                    "type": "text",
-                    "required": "true",
-                    "minlength": 3
-                },
-                {
-                    "name": "second_name",
-                    "placeholder": "Фамилия",
-                    "error_text": "Минимум 3 символа",
-                    "type": "text",
-                    "required": "true",
-                    "minlength": 3
-                },
-                {
-                    "name": "phone",
-                    "placeholder": "Телефон",
-                    "error_text": "Неверный телефон",
-                    "type": "tel",
-                    "required": "true"
-                },
-                {
-                    "name": "password",
-                    "placeholder": "Пароль",
-                    "error_text": "Минимум 6 символов",
-                    "type": "password",
-                    "required": "true",
-                    "minlength": 6
-                },
-                {
-                    "name": "password_repeat",
-                    "placeholder": "Пароль еще раз",
-                    "error_text": "Пароли не совпадают",
-                    "type": "password",
-                    "required": "true",
-                    "minlength": 6
-                }
-            ]            
-        },
-        "button": {
-            "text": "Зарегистрироваться",
-            "cls": "form__button"
-        },
-        "link": {
-            "text": "Войти",
-            "url": "/login"
-        }
+        ]
     }
 }
