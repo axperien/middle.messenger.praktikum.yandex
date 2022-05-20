@@ -70,7 +70,7 @@ export type FieldProps = {
 
 export type FormProps = {
     title: string,
-    fields?: [],
+    fields?: Array<Record<string, any>>,
     button?: {
         cls: string,
         text: string
