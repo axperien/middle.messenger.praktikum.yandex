@@ -150,18 +150,16 @@ export default class Block<P = any> {
     }
 
     _makePropsProxy(props: any): any {
-        const self = this;
-
         return new Proxy(props as unknown as object, {
-            get(target: Record<string, unknown>, prop: string) {
+            get: (target: Record<string, unknown>, prop: string) => {
                 const value = target[prop];
                 return typeof value === 'function' ? value.bind(target) : value;
             },
-            set(target: Record<string, unknown>, prop: string, value: unknown) {
+            set: (target: Record<string, unknown>, prop: string, value: unknown) => {
                 // eslint-disable-next-line no-param-reassign
                 target[prop] = value;
 
-                self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+                this.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
                 return true;
             },
             deleteProperty() {
