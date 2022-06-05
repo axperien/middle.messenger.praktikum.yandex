@@ -12,7 +12,7 @@ import { ChatList } from '../components/chatList/chatList';
 import { ChatInfo } from '../components/chatInfo/chatInfo';
 import { ChatForm } from '../components/chatForm/chatForm';
 import { ChatMessage } from '../components/chatMessage/chatMessage';
-import { Loader } from '../components/Loader/Loader';
+import { Loader } from '../components/Loader/loader';
 
 registerComponent(Button);
 registerComponent(Field);
