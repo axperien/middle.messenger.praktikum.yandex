@@ -143,3 +143,8 @@ export type ChatMessageProps = {
     you?: string,
     created?: string
 }
+
+export type ChatInfoProps = {
+    name: string,
+    avatar: { image: string }
+}
