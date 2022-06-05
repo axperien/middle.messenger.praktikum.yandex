@@ -15,12 +15,12 @@ export class ChatInfo extends Block<ChatInfoProps> {
                 }}}
                 <div class="dialog__name">{{ name }}</div>
                 <div class="dialog__menu">
-                    <button class="dialog__menu-button"></button>
-                    <div class="dialog__menu-list">
-                        <button>Добавить пользователя</button>
-                        <button>Удалить пользователя</button>
-                        <button>Удалить чат</button>
-                    </div>
+                    {{{
+                        Button
+                            url="/messenger/edit"
+                            cls="dialog__menu-button"
+                            text=""
+                    }}}
                 </div>
             </div>
         `;

@@ -17,42 +17,8 @@ export type ButtonProps = {
     cls: string,
     text: string;
     type: string,
+    url?: string,
     onClick: () => void
-}
-
-export type ChatFormProps = {
-    name: string,
-    avatar: { image: string, image_x2: string },
-    events: any
-}
-
-export type ChatInfoProps = {
-    name: string,
-    avatar: { image: string, image_x2: string }
-}
-
-export type ChatUser = {
-    name: string,
-    avatar: { image: string, image_x2: string }
-}
-
-export type Chat = {
-    id: number,
-    user: ChatUser,
-    lastMessage: Record<'time' | 'text' | 'from', string>
-}
-
-export type ChatListProps = {
-    chats: Array<Chat>,
-    onClick: () => void,
-    events: any
-}
-
-export type ChatMessageProps = {
-    from: string,
-    text: string,
-    image: string,
-    time: string
 }
 
 export type ErrorProps = {
@@ -104,8 +70,88 @@ export type UserFieldProps ={
   }
 
 export type HTTPTransportOptions = {
-    data: any;
-    timeout: number;
-    method: string;
-    headers: any;
+    data?: any;
+    timeout?: number;
+    method?: string;
+    headers?: any;
 };
+
+export type Indexed<T = unknown> = {
+    [key in string]: T;
+};
+
+export type Action<State> = (
+    // eslint-disable-next-line no-use-before-define
+    dispatch: Dispatch<State>,
+    state: State,
+    payload: any,
+) => void;
+
+export type Dispatch<State> = (
+    nextStateOrAction: Partial<State> | Action<State>,
+    payload?: any,
+) => void;
+
+export type AppState<T = unknown> = {
+    [key in string]: T;
+};
+
+export type loginType = {
+    login: string,
+    password: string
+}
+
+export type userType = {
+    first_name?: string,
+    second_name?: string,
+    login?: string,
+    email?: string,
+    password?: string,
+    phone?: string,
+    display_name?: string,
+    avatar?: string | null,
+    id?: number,
+}
+
+export type passwordType = {
+    oldPassword: string,
+    newPassword: string,
+}
+
+export type Chat = {
+    id?: number,
+    title?: string,
+    avatar?: string,
+    unread_count?: number,
+    last_message?: any,
+}
+
+export type User = {
+    id?: number,
+    login?: string,
+    firstName?: string,
+    lastName?: string,
+    displayName?: string,
+    email?: string,
+    avatar?: string,
+    phone?: string,
+    you?: boolean,
+}
+
+export type ChatListProps = {
+    chats? : []
+    currentChat: Chat | null,
+    onSelectChat?: () => void,
+    events: any
+}
+
+export type ChatFormProps = {
+    events: any
+}
+
+export type ChatMessageProps = {
+    image?: string,
+    text?: string,
+    you?: string,
+    created?: string
+}

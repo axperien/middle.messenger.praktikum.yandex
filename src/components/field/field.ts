@@ -30,6 +30,8 @@ export class Field extends Block<FieldProps> {
                         type="{{ type }}" 
                         {{#if (eq readonly true)}} readonly {{/if}}
                         {{#if value }} value="{{ value }}" {{/if}}
+                        readonly
+                        onfocus="this.removeAttribute('readonly');"
                         >
                     <span>{{ text }}</span>
                     <div class="form__error"></div>

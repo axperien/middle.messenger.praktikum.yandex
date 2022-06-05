@@ -6,14 +6,16 @@ export class ChatList extends Block<ChatListProps> {
 
     constructor({
         chats,
+        currentChat,
         // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onClick = () => {},
+        onSelectChat = () => {},
     }: ChatListProps) {
         super({
             chats,
-            onClick,
+            currentChat,
+            onSelectChat,
             events: {
-                click: onClick,
+                click: onSelectChat,
             },
         });
     }
@@ -22,24 +24,33 @@ export class ChatList extends Block<ChatListProps> {
         return `
             <div class="chats__items">
                 {{#each chats }}
-                    <div class="chats__item">
+                    <div class="chats__item {{#if (eq ../currentChat.id id)}}chats__item--active{{/if}}" data-chat-id={{ id }}>
                         {{{ 
                             Avatar 
-                                image=user.avatar.image
-                                image_x2=user.avatar.image_x2
+                                image=avatar
                         }}}
                         <div class="chats__content">
                             <div class="chats__head">
-                                <p class="chats__name">{{ user.name }}</p>
-                                <span class="chats__time">{{ lastMessage.time }}</span>
+                                <p class="chats__name">{{ title }}</p>
+                                <span class="chats__time">{{ last_message.time }}</span>
                             </div>
-                            
-                            <p class="chats__text">
-                                {{#if (eq lastMessage.from 'self')}}
-                                    <b>Вы:</b>
+
+                            {{#if lastMessage}}
+                                <p class="chats__text">
+                                    {{#if (eq lastMessage.you true)}}
+                                        <b>Вы:</b>
+                                    {{else}}
+                                        <b>{{ lastMessage.from }}:</b>
+                                    {{/if}}
+                                    {{ lastMessage.text }}
+                                </p>
+
+                                {{#if (gt unread_count 0)}}
+                                    <div class="chats__unread">{{ unread_count }}</div>
                                 {{/if}}
-                                {{ lastMessage.text }}
-                            </p>
+                            {{else}}
+                                <p class="chats__text">Нет сообщений</p>
+                            {{/if}}
                         </div>
                     </div>
                 {{else}}

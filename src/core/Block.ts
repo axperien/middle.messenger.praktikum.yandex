@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-use-before-define */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable @typescript-eslint/no-this-alias */
@@ -40,6 +42,12 @@ export default class Block<P = any> {
 
     public static componentName?: string;
 
+    public needCheckAuth = false;
+
+    public pageTitle?: string = '';
+
+    public pageCls?: string = '';
+
     public constructor(props?: P) {
         const eventBus = new EventBus<Events>();
 
@@ -48,9 +56,10 @@ export default class Block<P = any> {
         };
 
         this.getStateFromProps(props);
+        // this.getPropsFromState(this.state);
 
         this.props = this._makePropsProxy(props || {} as P);
-        this.state = this._makePropsProxy(this.state);
+        this.state = this._makePropsProxy(this.props);
 
         this.eventBus = () => eventBus;
 
@@ -70,8 +79,8 @@ export default class Block<P = any> {
         this._element = this._createDocumentElement('div');
     }
 
-    protected getStateFromProps(props: any): void {
-        this.state = {};
+    protected getStateFromProps(props?: P): void {
+        this.state = props;
     }
 
     init() {
@@ -83,17 +92,35 @@ export default class Block<P = any> {
         this.componentDidMount(props);
     }
 
-    componentDidMount(props: P) {}
+    componentDidMount(props: P) {
+
+    }
 
     _componentDidUpdate(oldProps: P, newProps: P) {
         const response = this.componentDidUpdate(oldProps, newProps);
+
         if (!response) {
             return;
         }
+
         this._render();
     }
 
     componentDidUpdate(oldProps: P, newProps: P) {
+        if (this.needCheckAuth) {
+            // @ts-ignore
+            const { store } = this.props;
+
+            if (store) {
+                const { user, isLoadApp } = store;
+
+                if (user === null && isLoadApp) {
+                    window.router.go('/sign-in');
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 
@@ -160,6 +187,7 @@ export default class Block<P = any> {
                 target[prop] = value;
 
                 this.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+
                 return true;
             },
             deleteProperty() {
@@ -186,6 +214,7 @@ export default class Block<P = any> {
     }
 
     _addEvents() {
+        this.addEvents();
         // eslint-disable-next-line prefer-destructuring
         const events: Record<string, () => void> = (this.props as any).events;
 
@@ -196,6 +225,10 @@ export default class Block<P = any> {
         Object.entries(events).forEach(([event, listener]) => {
             this._element!.addEventListener(event, listener);
         });
+    }
+
+    addEvents() {
+
     }
 
     _compile(): DocumentFragment {
@@ -226,5 +259,13 @@ export default class Block<P = any> {
 
     hide() {
         this.getContent().style.display = 'none';
+    }
+
+    getPageTitle() {
+        return this.pageTitle;
+    }
+
+    getPageCls() {
+        return this.pageCls;
     }
 }

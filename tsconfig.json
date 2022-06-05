@@ -10,5 +10,6 @@
         "strictNullChecks": true,
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
+        "downlevelIteration": true,
    },
 } 

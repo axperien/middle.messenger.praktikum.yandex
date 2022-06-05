@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { sendMessage } from '../../services/chats';
 import Block from '../../core/Block';
 import './chatForm.scss';
 import { ChatFormProps } from '../../core/types';
@@ -20,10 +22,15 @@ export class ChatForm extends Block<ChatFormProps> {
 
                         // eslint-disable-next-line no-restricted-syntax
                         for (const [name, value] of formData) {
+                            // @ts-ignore
                             data[name] = value;
                         }
 
-                        console.log(data);
+                        // @ts-ignore
+                        if (data.message) {
+                            // @ts-ignore
+                            sendMessage(encodeURIComponent(data.message));
+                        }
                     }
                 },
             },
@@ -43,6 +50,7 @@ export class ChatForm extends Block<ChatFormProps> {
                         placeholder="Сообщение" 
                         name="message" 
                         type="text"
+                        autocomplete="off"
                         >
                 </div>
                 <button class="dialog__submit" type="submit"></button>

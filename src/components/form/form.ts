@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-underscore-dangle */
 import Block from '../../core/Block';
 import './form.scss';
 import { checkFormFieldError } from '../../core/validator';
-import { FormProps } from '../../core/types';
+import { FormProps, loginType } from '../../core/types';
 
 export class Form extends Block<FormProps> {
     public static componentName = 'Form';
@@ -26,7 +27,8 @@ export class Form extends Block<FormProps> {
 
                 inputs.forEach((elem) => {
                     const input = elem as HTMLInputElement;
-                    checkFormFieldError(input);
+                    const prefix = input.className.split(' ')[0].split('__')[0];
+                    checkFormFieldError(input, prefix);
                 });
 
                 const inputsWithError = form.querySelectorAll('.form__input--error');
@@ -37,18 +39,24 @@ export class Form extends Block<FormProps> {
                 }
 
                 const formData = new FormData(form);
-                const data : { [key: string]: any } = {};
+                const data: loginType = {
+                    login: '',
+                    password: '',
+                };
 
-                // eslint-disable-next-line no-restricted-syntax
-                for (const [name, value] of formData) {
-                    data[name] = value;
-                }
+                formData.forEach((value, key) => {
+                    // @ts-ignore
+                    data[key] = value;
+                });
 
-                console.log(data);
+                const { onSubmit } = this.props;
+
+                // @ts-ignore
+                onSubmit(data);
             });
         }
 
-        // super._addEvents();
+        super._addEvents();
     }
 
     render(): string {
