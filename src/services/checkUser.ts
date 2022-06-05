@@ -6,7 +6,7 @@ export const checkUser = async () => {
         const userInfo = await apiUser.getUserInfo();
 
         if (isError(userInfo)) {
-            window.store.dispatch({
+            window.store.set({
                 user: null,
                 isLoadApp: true,
             });
@@ -14,7 +14,7 @@ export const checkUser = async () => {
             return;
         }
 
-        window.store.dispatch({
+        window.store.set({
             user: userInfo,
             isLoadApp: true,
         });

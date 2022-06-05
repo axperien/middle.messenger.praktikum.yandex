@@ -8,7 +8,7 @@ import { apiAuth } from '../api/apiAuth';
 export const logout = async () => {
     await apiAuth.logout();
 
-    window.store.dispatch({
+    window.store.set({
         user: null,
         isLoadApp: true,
         currentChat: null,
@@ -21,7 +21,7 @@ export const login = async (data: loginType) => {
     const response = await apiAuth.login(data);
 
     if (isError(response)) {
-        window.store.dispatch({
+        window.store.set({
             user: null,
             isLoadApp: true,
         });
@@ -35,14 +35,14 @@ export const login = async (data: loginType) => {
     if (isError(responseUser)) {
         logout();
 
-        window.store.dispatch({
+        window.store.set({
             isLoadApp: true,
         });
 
         return;
     }
 
-    window.store.dispatch({
+    window.store.set({
         user: responseUser,
         isLoadApp: true,
     });

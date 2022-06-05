@@ -80,18 +80,6 @@ export type Indexed<T = unknown> = {
     [key in string]: T;
 };
 
-export type Action<State> = (
-    // eslint-disable-next-line no-use-before-define
-    dispatch: Dispatch<State>,
-    state: State,
-    payload: any,
-) => void;
-
-export type Dispatch<State> = (
-    nextStateOrAction: Partial<State> | Action<State>,
-    payload?: any,
-) => void;
-
 export type AppState<T = unknown> = {
     [key in string]: T;
 };

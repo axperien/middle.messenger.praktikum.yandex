@@ -8,7 +8,7 @@ export const register = async (data: userType) => {
     const response = await apiUser.register(data);
 
     if (isError(response)) {
-        window.store.dispatch({
+        window.store.set({
             user: null,
             isLoadApp: false,
         });
@@ -27,7 +27,7 @@ export const register = async (data: userType) => {
         return;
     }
 
-    window.store.dispatch({
+    window.store.set({
         user: responseUser,
         isLoadApp: true,
     });
@@ -39,7 +39,7 @@ export const getUserInfo = async () => {
     const response = await apiUser.getUserInfo();
 
     if (isError(response)) {
-        window.store.dispatch({
+        window.store.set({
             user: null,
             isLoadApp: true,
         });
@@ -50,7 +50,7 @@ export const getUserInfo = async () => {
         return;
     }
 
-    window.store.dispatch({
+    window.store.set({
         user: response,
     });
 };
@@ -65,7 +65,7 @@ export const editUser = async (data: userType) => {
         return;
     }
 
-    window.store.dispatch({
+    window.store.set({
         user: response,
     });
 };

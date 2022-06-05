@@ -36,7 +36,7 @@ export class ChatsPage extends Block {
                         const currentChat = chats.find((chat: { id: number }) => chat.id === id);
 
                         if (currentChat) {
-                            window.store.dispatch({
+                            window.store.set({
                                 currentChat,
                             });
                             getCurrentChatInfo();

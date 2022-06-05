@@ -26,7 +26,7 @@ export const getChatsList = async () => {
         chats.push(transformChat(r));
     });
 
-    window.store.dispatch({
+    window.store.set({
         // @ts-ignore
         chats,
     });
@@ -81,7 +81,7 @@ export const getCurrentChatInfo = async () => {
             token: responseToken.token,
         });
 
-        window.store.dispatch({
+        window.store.set({
             currentChat,
             messages: [],
         });
