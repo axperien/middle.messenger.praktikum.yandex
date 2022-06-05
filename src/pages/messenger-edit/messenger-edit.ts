@@ -45,12 +45,19 @@ export class ChatsEditPage extends Block {
         });
     }
 
-    componentDidMount(props: any): void {
+    componentDidMount(props: any): boolean {
         const { store } = this.state;
 
-        if (!store || !store.currentChat) {
+        console.log(store);
+
+        // временный фикс проверяем из глобального стора,
+        // почему-то при монтировании локальный стор недоступен
+        if (!window.store || !window.store.getState().currentChat) {
             window.router.go('/messenger');
+            return false;
         }
+
+        return true;
     }
 
     render(): string {
