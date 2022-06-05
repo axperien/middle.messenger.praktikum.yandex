@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { getChatsList } from './chats';
-import { transformMessage } from '../utils/apiTransform';
-import { isPing, isUserConnected } from '../utils/apiCheck';
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-constructor-return */
+
+import { getChatsList } from './chats';
+import { transformMessage } from '../utils/apiTransform';
+import { isPing, isUserConnected } from '../utils/apiCheck';
 
 type SocketData = {
     chatId: number;

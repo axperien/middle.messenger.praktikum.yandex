@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-param-reassign */
 import Handlebars, { HelperOptions } from 'handlebars';
 import Block from './Block';
@@ -9,6 +10,7 @@ interface BlockConstructable<Props = any> {
 
 export default function registerComponent<Props = any>(Component: BlockConstructable) {
     Handlebars.registerHelper(
+        // @ts-ignore
         Component.componentName,
         ({ hash: { ref, ...hash }, data }: HelperOptions) => {
             if (!data.root.children) {

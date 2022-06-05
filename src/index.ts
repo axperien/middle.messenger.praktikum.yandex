@@ -1,4 +1,3 @@
-import { HTTPTransport } from './core/HTTPTransport';
 import { checkUser } from './services/checkUser';
 import { AppState } from './core/types';
 import { initialState } from './store/index';
@@ -52,5 +51,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // имитация задержки
     setTimeout(checkUser, 1000);
-    // checkUser();
 });
