@@ -1,12 +1,15 @@
+import { Store } from '../core/Store';
 import { isError } from '../utils/apiCheck';
 import { apiUser } from '../api';
+
+const globalStore = new Store();
 
 export const checkUser = async () => {
     try {
         const userInfo = await apiUser.getUserInfo();
 
         if (isError(userInfo)) {
-            window.store.set({
+            globalStore.set({
                 user: null,
                 isLoadApp: true,
             });
@@ -14,7 +17,7 @@ export const checkUser = async () => {
             return;
         }
 
-        window.store.set({
+        globalStore.set({
             user: userInfo,
             isLoadApp: true,
         });

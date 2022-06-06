@@ -1,8 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable max-classes-per-file */
-/* eslint-disable @typescript-eslint/no-extra-semi */
 import 'global-jsdom/register';
 import { expect } from 'chai';
 import Block from './Block';
@@ -12,7 +7,7 @@ describe('Тестирование блока', () => {
         render() {
             return '<div id="test"></div>';
         }
-    };
+    }
 
     class TestWithProps extends Block {
         constructor() {
@@ -26,7 +21,7 @@ describe('Тестирование блока', () => {
         render() {
             return '<div id="test_with_props"></div>';
         }
-    };
+    }
 
     before(() => {
         document.body.innerHTML = '<div id="app"></div>';

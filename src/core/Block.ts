@@ -1,14 +1,10 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-use-before-define */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable @typescript-eslint/no-this-alias */
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable no-underscore-dangle */
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
 import { Nullable, Values } from './types';
+import { Router } from './Router';
+
+const globalRouter = new Router();
 
 interface BlockMeta<P = any> {
   props: P;
@@ -25,8 +21,6 @@ export default class Block<P = any> {
     } as const;
 
     public id = nanoid(6);
-
-    private readonly _meta: BlockMeta;
 
     protected _element: Nullable<HTMLElement> = null;
 
@@ -50,10 +44,6 @@ export default class Block<P = any> {
 
     public constructor(props?: P) {
         const eventBus = new EventBus<Events>();
-
-        this._meta = {
-            props,
-        };
 
         this.getStateFromProps(props);
         // this.getPropsFromState(this.state);
@@ -108,14 +98,13 @@ export default class Block<P = any> {
 
     componentDidUpdate(oldProps: P, newProps: P) {
         if (this.needCheckAuth) {
-            // @ts-ignore
-            const { store } = this.props;
+            const { store } = this.props as Record<string, any>;
 
             if (store) {
                 const { user, isLoadApp } = store;
 
                 if (user === null && isLoadApp) {
-                    window.router.go('/sign-in');
+                    globalRouter.go('/sign-in');
                     return false;
                 }
             }
@@ -183,7 +172,6 @@ export default class Block<P = any> {
                 return typeof value === 'function' ? value.bind(target) : value;
             },
             set: (target: Record<string, unknown>, prop: string, value: unknown) => {
-                // eslint-disable-next-line no-param-reassign
                 target[prop] = value;
 
                 this.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
@@ -201,7 +189,6 @@ export default class Block<P = any> {
     }
 
     _removeEvents() {
-        // eslint-disable-next-line prefer-destructuring
         const events: Record<string, () => void> = (this.props as any).events;
 
         if (!events || !this._element) {
@@ -215,7 +202,6 @@ export default class Block<P = any> {
 
     _addEvents() {
         this.addEvents();
-        // eslint-disable-next-line prefer-destructuring
         const events: Record<string, () => void> = (this.props as any).events;
 
         if (!events) {

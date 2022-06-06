@@ -1,9 +1,12 @@
+import { Router } from '../../core/Router';
+import { Store } from '../../core/Store';
 import { addUserToChat, deleteChatUser } from '../../services/chats';
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable no-underscore-dangle */
+
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
+
+const globalStore = new Store();
+const globalRouter = new Router();
 
 export class ChatsEditPage extends Block {
     pageTitle = 'Создать новый чат';
@@ -33,11 +36,11 @@ export class ChatsEditPage extends Block {
                 const target = e.target as HTMLElement;
                 const user = target.closest('.chats__form-user') || null;
 
-                if (user) {
-                    // @ts-ignore
-                    const id = parseInt(user.dataset.userId, 10);
+                if (user && user instanceof HTMLElement) {
+                    const userId = user.dataset?.userId;
+                    if (userId) {
+                        const id = parseInt(userId, 10);
 
-                    if (id) {
                         deleteChatUser(id);
                     }
                 }
@@ -46,14 +49,8 @@ export class ChatsEditPage extends Block {
     }
 
     componentDidMount(props: any): boolean {
-        const { store } = this.state;
-
-        console.log(store);
-
-        // временный фикс проверяем из глобального стора,
-        // почему-то при монтировании локальный стор недоступен
-        if (!window.store || !window.store.getState().currentChat) {
-            window.router.go('/messenger');
+        if (!globalStore || !globalStore.getState().currentChat) {
+            globalRouter.go('/messenger');
             return false;
         }
 

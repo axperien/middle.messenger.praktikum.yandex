@@ -1,7 +1,9 @@
-/* eslint-disable no-underscore-dangle */
+import { Router } from '../../core/Router';
 import Block from '../../core/Block';
 import './backUrl.scss';
 import { BackUrlProps } from '../../core/types';
+
+const globalRouter = new Router();
 
 export class BackUrl extends Block<BackUrlProps> {
     public static componentName = 'BackUrl';
@@ -13,9 +15,9 @@ export class BackUrl extends Block<BackUrlProps> {
         element?.addEventListener('click', (e) => {
             e.preventDefault();
             if (url) {
-                window.router.go(url);
+                globalRouter.go(url);
             } else {
-                window.router.back();
+                globalRouter.back();
             }
         });
     }

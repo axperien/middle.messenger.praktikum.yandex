@@ -1,18 +1,24 @@
+import { Router } from '../core/Router';
+import { Store } from '../core/Store';
 import { isError } from '../utils/apiCheck';
-import { userType, passwordType } from '../core/types';
+import { userType, APIError } from '../core/types';
 import { apiUser } from '../api';
+
+const globalRouter = new Router();
+
+const globalStore = new Store();
 
 export const register = async (data: userType) => {
     const response = await apiUser.register(data);
 
     if (isError(response)) {
-        window.store.set({
+        globalStore.set({
             user: null,
             isLoadApp: false,
         });
 
-        // @ts-ignore
-        alert(response.reason);
+        const error = response as APIError;
+        alert(error.reason);
 
         return;
     }
@@ -20,35 +26,35 @@ export const register = async (data: userType) => {
     const responseUser = await apiUser.getUserInfo();
 
     if (isError(responseUser)) {
-        window.router.go('/sign-in');
+        globalRouter.go('/sign-in');
 
         return;
     }
 
-    window.store.set({
+    globalStore.set({
         user: responseUser,
         isLoadApp: true,
     });
 
-    window.router.go('/messenger');
+    globalRouter.go('/messenger');
 };
 
 export const getUserInfo = async () => {
     const response = await apiUser.getUserInfo();
 
     if (isError(response)) {
-        window.store.set({
+        globalStore.set({
             user: null,
             isLoadApp: true,
         });
 
-        // @ts-ignore
-        alert(response.reason);
+        const error = response as APIError;
+        alert(error.reason);
 
         return;
     }
 
-    window.store.set({
+    globalStore.set({
         user: response,
     });
 };
@@ -57,23 +63,23 @@ export const editUser = async (data: userType) => {
     const response = await apiUser.editUser(data);
 
     if (isError(response)) {
-        // @ts-ignore
-        alert(response.reason);
+        const error = response as APIError;
+        alert(error.reason);
 
         return;
     }
 
-    window.store.set({
+    globalStore.set({
         user: response,
     });
 };
 
-export const ediPassword = async (data: passwordType) => {
+export const ediPassword = async (data: any) => {
     const response = await apiUser.editPassword(data);
 
     if (isError(response)) {
-        // @ts-ignore
-        alert(response.reason);
+        const error = response as APIError;
+        alert(error.reason);
     }
 
     return response;

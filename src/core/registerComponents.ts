@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable no-param-reassign */
 import Handlebars, { HelperOptions } from 'handlebars';
 import Block from './Block';
 

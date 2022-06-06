@@ -46,7 +46,7 @@ export type FormProps = {
         cls: string,
         text: string
     },
-    onSubmit: () => void,
+    onSubmit: (...args: any) => void,
     events: any
 }
 
@@ -147,4 +147,8 @@ export type ChatMessageProps = {
 export type ChatInfoProps = {
     name: string,
     avatar: { image: string }
+}
+
+export type APIError = {
+    reason: string;
 }

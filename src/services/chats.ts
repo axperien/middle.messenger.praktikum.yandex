@@ -1,16 +1,16 @@
+import { Store } from '../core/Store';
 import { transformChat } from '../utils/apiTransform';
 import { apiUser, apiChat } from '../api';
-import { User } from '../core/types';
+import { User, APIError, Indexed } from '../core/types';
 import { isError } from '../utils/apiCheck';
 import socket from './webSocket';
+
+const globalStore = new Store();
 
 export const getChatsList = async () => {
     const response = await apiChat.getChats();
 
     if (isError(response)) {
-        // @ts-ignore
-        // alert(response.reason);
-
         return;
     }
 
@@ -22,18 +22,18 @@ export const getChatsList = async () => {
         chats.push(transformChat(r));
     });
 
-    window.store.set({
+    globalStore.set({
         // @ts-ignore
         chats,
     });
 };
 
-export const createChat = async (data: { title: string }) => {
+export const createChat = async (data: Indexed) => {
     const response = await apiChat.createChat(data);
 
     if (isError(response)) {
-        // @ts-ignore
-        alert(response.reason);
+        const error = response as APIError;
+        alert(error.reason);
 
         return;
     }
@@ -42,7 +42,7 @@ export const createChat = async (data: { title: string }) => {
 };
 
 export const getCurrentChatInfo = async () => {
-    const store = window.store.getState();
+    const store = globalStore.getState();
     const { currentChat, user } = store;
 
     if (currentChat) {
@@ -77,7 +77,7 @@ export const getCurrentChatInfo = async () => {
             token: responseToken.token,
         });
 
-        window.store.set({
+        globalStore.set({
             currentChat,
             messages: [],
         });
@@ -93,7 +93,7 @@ export const stopMessage = () => {
 };
 
 export const addUserToChat = async (data: { login: string }) => {
-    const store = window.store.getState();
+    const store = globalStore.getState();
     const { currentChat } = store;
     let userId = null;
 
@@ -134,8 +134,8 @@ export const addUserToChat = async (data: { login: string }) => {
         const response = await apiChat.addUser(addUserData);
 
         if (isError(response)) {
-            // @ts-ignore
-            alert(response.reason);
+            const error = response as APIError;
+            alert(error.reason);
 
             return;
         }
@@ -147,7 +147,7 @@ export const addUserToChat = async (data: { login: string }) => {
 };
 
 export const deleteChatUser = async (userId: number) => {
-    const store = window.store.getState();
+    const store = globalStore.getState();
     const { currentChat } = store;
 
     if (currentChat) {
@@ -166,8 +166,8 @@ export const deleteChatUser = async (userId: number) => {
         const response = await apiChat.deleteUser(data);
 
         if (isError(response)) {
-            // @ts-ignore
-            alert(response.reason);
+            const error = response as APIError;
+            alert(error.reason);
 
             return;
         }

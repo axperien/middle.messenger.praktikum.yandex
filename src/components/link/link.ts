@@ -1,13 +1,14 @@
-/* eslint-disable no-underscore-dangle */
+import { Router } from '../../core/Router';
 import Block from '../../core/Block';
 import './link.scss';
 import { LinkProps } from '../../core/types';
+
+const globalRouter = new Router();
 
 export class Link extends Block<LinkProps> {
     public static componentName = 'Link';
 
     constructor({
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
         text, cls, url, onClick = () => {},
     }: LinkProps) {
         super({
@@ -22,7 +23,7 @@ export class Link extends Block<LinkProps> {
         element?.addEventListener('click', (e) => {
             e.preventDefault();
             if (url) {
-                window.router.go(url);
+                globalRouter.go(url);
             }
         });
     }

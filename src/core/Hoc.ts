@@ -1,27 +1,28 @@
-/* eslint-disable react/no-unused-state */
 import { AppState } from './types';
 import { isEqual } from '../utils/isEqual';
 import { Store } from './Store';
 import Block from './Block';
 
+const globalStore = new Store();
+
 export default (Component: typeof Block) => class extends Component {
     public static componentName = Component.name;
 
-    constructor(props: object & { store: Store<AppState> }) {
-        super({ ...props, store: window.store });
+    constructor(props: object & { store: AppState }) {
+        super({ ...props, store: globalStore });
     }
 
-    componentDidMount(props: object & { store: Store<AppState> }) {
+    componentDidMount(props: object & { store: AppState }) {
         super.componentDidMount(props);
 
         this.setState({
-            store: window.store.getState(),
+            store: globalStore.getState(),
         });
 
-        window.store.on('changed', (prevState, nextState) => {
+        globalStore.on('changed', (prevState, nextState) => {
             if (!isEqual(prevState, nextState)) {
                 this.setState({
-                    store: window.store.getState(),
+                    store: globalStore.getState(),
                 });
             }
         });

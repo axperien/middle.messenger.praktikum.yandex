@@ -1,3 +1,4 @@
+import { Indexed } from '../core/types';
 import { HTTPTransport } from '../core/HTTPTransport';
 
 const http = new HTTPTransport();
@@ -9,7 +10,7 @@ export class apiChat {
         });
     }
 
-    static createChat(data: { title: string }) {
+    static createChat(data: Indexed) {
         return http.post('/chats', {
             data,
             headers: { 'Content-Type': 'application/json' },

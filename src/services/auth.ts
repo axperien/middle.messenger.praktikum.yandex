@@ -1,32 +1,37 @@
+import { Router } from '../core/Router';
+import { Store } from '../core/Store';
 import { getChatsList } from './chats';
 import { apiUser } from '../api';
 import { isError } from '../utils/apiCheck';
-import { loginType } from '../core/types';
+import { loginType, APIError } from '../core/types';
 import { apiAuth } from '../api/apiAuth';
+
+const globalStore = new Store();
+const globalRouter = new Router();
 
 export const logout = async () => {
     await apiAuth.logout();
 
-    window.store.set({
+    globalStore.set({
         user: null,
         isLoadApp: true,
         currentChat: null,
     });
 
-    window.router.go('/sign-in');
+    globalRouter.go('/sign-in');
 };
 
 export const login = async (data: loginType) => {
     const response = await apiAuth.login(data);
 
     if (isError(response)) {
-        window.store.set({
+        globalStore.set({
             user: null,
             isLoadApp: true,
         });
 
-        // @ts-ignore
-        alert(response.reason);
+        const error = response as APIError;
+        alert(error.reason);
     }
 
     const responseUser = await apiUser.getUserInfo();
@@ -34,19 +39,19 @@ export const login = async (data: loginType) => {
     if (isError(responseUser)) {
         logout();
 
-        window.store.set({
+        globalStore.set({
             isLoadApp: true,
         });
 
         return;
     }
 
-    window.store.set({
+    globalStore.set({
         user: responseUser,
         isLoadApp: true,
     });
 
     getChatsList();
 
-    window.router.go('/messenger');
+    globalRouter.go('/messenger');
 };

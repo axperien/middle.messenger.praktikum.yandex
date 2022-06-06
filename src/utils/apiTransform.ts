@@ -1,10 +1,11 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { Store } from '../core/Store';
 import { User } from '../core/types';
 
-/* eslint-disable no-nested-ternary */
+const globalStore = new Store();
+
 const findUser = (id: number): User | null => {
     // @ts-ignore
-    const users = window.store.getState().currentChat?.users;
+    const users = globalStore.getState().currentChat?.users;
     let result = null;
 
     if (users) {
@@ -29,7 +30,7 @@ export const transformUser = (data) => ({
     phone: data.phone ? data.phone : '',
     email: data.email,
     // @ts-ignore
-    you: data.id === window.store.getState().user?.id,
+    you: data.id === globalStore.getState().user?.id,
 });
 
 // @ts-ignore
@@ -39,7 +40,7 @@ export const transformMessage = (data) => ({
     // @ts-ignore
     created: new Date(data.time).toLocaleDateString(undefined, { day: 'numeric', month: 'numeric' }),
     // @ts-ignore
-    you: (data.user_id) ? data.user_id === window.store.getState().user?.id : false,
+    you: (data.user_id) ? data.user_id === globalStore.getState().user?.id : false,
     isRead: data.is_read,
 });
 
@@ -49,7 +50,7 @@ export const transformLastMessage = (data) => ({
     from: data.user.display_name ? data.user.display_name : data.user.login,
     created: new Date(data.time).toLocaleDateString(undefined, { day: 'numeric', month: 'numeric' }),
     // @ts-ignore
-    you: (data.user.login) ? data.user.login === window.store.getState().user?.login : false,
+    you: (data.user.login) ? data.user.login === globalStore.getState().user?.login : false,
 });
 
 // @ts-ignore

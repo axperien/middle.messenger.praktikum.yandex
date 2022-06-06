@@ -1,7 +1,9 @@
+import { Store } from '../../core/Store';
 import { getChatsList, getCurrentChatInfo } from '../../services/chats';
-/* eslint-disable no-underscore-dangle */
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
+
+const globalStore = new Store();
 
 export class ChatsPage extends Block {
     pageTitle = 'Список чатов';
@@ -36,7 +38,7 @@ export class ChatsPage extends Block {
                         const currentChat = chats.find((chat: { id: number }) => chat.id === id);
 
                         if (currentChat) {
-                            window.store.set({
+                            globalStore.set({
                                 currentChat,
                             });
                             getCurrentChatInfo();

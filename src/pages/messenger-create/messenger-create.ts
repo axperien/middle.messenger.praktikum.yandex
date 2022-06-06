@@ -1,8 +1,10 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable no-underscore-dangle */
+import { Indexed } from '../../core/types';
+import { Router } from '../../core/Router';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
 import { createChat } from '../../services/chats';
+
+const globalRouter = new Router();
 
 export class ChatsCreatePage extends Block {
     pageTitle = 'Создать новый чат';
@@ -21,19 +23,17 @@ export class ChatsCreatePage extends Block {
 
                 if (form) {
                     const formData = new FormData(form);
-                    const data: { title: string } = {
+                    const data: Indexed = {
                         title: '',
                     };
 
-                    // eslint-disable-next-line no-restricted-syntax
-                    for (const [name, value] of formData) {
-                        // @ts-ignore
+                    [...formData.entries()].forEach(([name, value]) => {
                         data[name] = value;
-                    }
+                    });
 
                     createChat(data)
                         .then(() => {
-                            window.router.go('/messenger');
+                            globalRouter.go('/messenger');
                         });
                 }
             },

@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { renderDOM } from './renderDOM';
 import { isEqual } from '../utils/isEqual';
 import Block from './Block';

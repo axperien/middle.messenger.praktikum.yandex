@@ -1,10 +1,12 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { Router } from '../../core/Router';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
-import { passwordType } from '../../core/types';
+import { Indexed } from '../../core/types';
 import { checkFormFieldError } from '../../core/validator';
 import { ediPassword } from '../../services/user';
 import { isError } from '../../utils/apiCheck';
+
+const globalRouter = new Router();
 
 export class UserEditPasswordPage extends Block {
     pageTitle = 'Изменить пароль';
@@ -21,7 +23,7 @@ export class UserEditPasswordPage extends Block {
 
                 if (form) {
                     const formData = new FormData(form);
-                    const data: passwordType = {
+                    const data: Indexed = {
                         oldPassword: '',
                         newPassword: '',
                     };
@@ -48,16 +50,14 @@ export class UserEditPasswordPage extends Block {
                         return;
                     }
 
-                    // eslint-disable-next-line no-restricted-syntax
-                    for (const [name, value] of formData) {
-                        // @ts-ignore
+                    [...formData.entries()].forEach(([name, value]) => {
                         data[name] = value;
-                    }
+                    });
 
                     ediPassword(data)
                         .then((r) => {
                             if (!isError(r)) {
-                                window.router.go('/settings');
+                                globalRouter.go('/settings');
                             }
                         });
                 }

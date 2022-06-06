@@ -1,8 +1,10 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import { userType } from '../../core/types';
+import { Router } from '../../core/Router';
+import { Indexed } from '../../core/types';
 import { editUser } from '../../services/user';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
+
+const globalRouter = new Router();
 
 export class UserEditPage extends Block {
     pageTitle = 'Изменить данные';
@@ -19,17 +21,15 @@ export class UserEditPage extends Block {
 
                 if (form) {
                     const formData = new FormData(form);
-                    const data: userType = {};
+                    const data: Indexed = {};
 
-                    // eslint-disable-next-line no-restricted-syntax
-                    for (const [name, value] of formData) {
-                        // @ts-ignore
+                    [...formData.entries()].forEach(([name, value]) => {
                         data[name] = value;
-                    }
+                    });
 
                     editUser(data)
                         .then(() => {
-                            window.router.go('/settings');
+                            globalRouter.go('/settings');
                         });
                 }
             },

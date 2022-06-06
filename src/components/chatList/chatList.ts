@@ -7,7 +7,6 @@ export class ChatList extends Block<ChatListProps> {
     constructor({
         chats,
         currentChat,
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
         onSelectChat = () => {},
     }: ChatListProps) {
         super({

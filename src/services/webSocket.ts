@@ -1,12 +1,9 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-constructor-return */
-
+import { Store } from '../core/Store';
 import { getChatsList } from './chats';
 import { transformMessage } from '../utils/apiTransform';
 import { isPing, isUserConnected } from '../utils/apiCheck';
+
+const globalStore = new Store();
 
 type SocketData = {
     chatId: number;
@@ -56,7 +53,7 @@ export class Socket {
         const response = JSON.parse(e.data);
 
         if (!isPing(response) && !isUserConnected(response)) {
-            const { messages } = window.store.getState() || [];
+            const { messages } = globalStore.getState() || [];
 
             if (response instanceof Array) {
                 response.forEach((value) => {
@@ -68,7 +65,7 @@ export class Socket {
                 messages.unshift(transformMessage(response));
             }
 
-            window.store.set({
+            globalStore.set({
                 messages,
             });
 

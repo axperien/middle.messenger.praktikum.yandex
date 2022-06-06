@@ -1,5 +1,5 @@
 import { queryStringify } from './helpers';
-import { HTTPTransportOptions } from './types';
+import { HTTPTransportOptions, APIError } from './types';
 
 export enum Methods {
     GET = 'GET',
@@ -44,7 +44,6 @@ export class HTTPTransport {
         method: Methods.DELETE,
     }, options.timeout);
 
-    // eslint-disable-next-line class-methods-use-this
     public request = (url:string, options:HTTPTransportOptions, timeout = 5000) => {
         const { method = '', data, headers } = options;
 

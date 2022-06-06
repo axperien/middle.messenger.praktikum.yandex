@@ -1,8 +1,6 @@
-/* eslint-disable no-underscore-dangle */
 import { Route } from './Route';
 
 export class Router {
-    // eslint-disable-next-line no-use-before-define
     private static _instance: Router;
 
     protected routes!: Array<Route>;
@@ -13,7 +11,6 @@ export class Router {
 
     constructor() {
         if (Router._instance) {
-            // eslint-disable-next-line no-constructor-return
             return Router._instance;
         }
 
@@ -35,7 +32,6 @@ export class Router {
     start() {
         window.onpopstate = ((event: any) => {
             this._onRoute(event.currentTarget.location.pathname);
-        // eslint-disable-next-line no-extra-bind
         }).bind(this);
 
         this._onRoute(window.location.pathname);

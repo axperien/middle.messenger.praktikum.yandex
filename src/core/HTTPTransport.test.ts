@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 import { expect } from 'chai';
 import { HTTPTransport } from './HTTPTransport';
 

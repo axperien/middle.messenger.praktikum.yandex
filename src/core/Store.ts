@@ -1,20 +1,31 @@
+import { AppState } from './types';
 import EventBus from './EventBus';
 
-export class Store<State extends Record<string, any>> extends EventBus {
-    private state: State = {} as State;
+import { initialState } from '../store';
 
-    constructor(defaultState: State) {
+export class Store extends EventBus {
+    private static _instance: Store;
+
+    private state: AppState = {};
+
+    constructor(defaultState?: AppState) {
+        if (Store._instance) {
+            return Store._instance;
+        }
+
         super();
 
-        this.state = defaultState;
-        this.set(defaultState);
+        this.state = defaultState || initialState;
+        this.set(this.state);
+
+        Store._instance = this;
     }
 
     public getState() {
         return this.state;
     }
 
-    public set(nextState: Partial<State>) {
+    public set(nextState: AppState) {
         const prevState = { ...this.state };
 
         this.state = { ...this.state, ...nextState };

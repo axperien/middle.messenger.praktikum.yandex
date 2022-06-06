@@ -1,7 +1,4 @@
 import { checkUser } from './services/checkUser';
-import { AppState } from './core/types';
-import { initialState } from './store/index';
-import { Store } from './core/Store';
 import { Router } from './core/Router';
 
 import pageHome from './pages/home';
@@ -21,19 +18,8 @@ import './scss/main.scss';
 import './core/registerHelpers';
 import './core/registerPartials';
 
-declare global {
-    interface Window {
-        store: Store<AppState>;
-        router: Router;
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    const store = new Store<AppState>(initialState);
     const router = new Router();
-
-    window.store = store;
-    window.router = router;
 
     router
         .use('/', pageHome, {})

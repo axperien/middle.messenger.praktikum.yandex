@@ -1,13 +1,14 @@
-/* eslint-disable no-underscore-dangle */
+import { Router } from '../../core/Router';
 import Block from '../../core/Block';
 import './button.scss';
 import { ButtonProps } from '../../core/types';
+
+const globalRouter = new Router();
 
 export class Button extends Block {
     public static componentName = 'Button';
 
     constructor({
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
         text, cls, type = 'button', url, onClick = () => {},
     } : ButtonProps) {
         super({
@@ -22,7 +23,7 @@ export class Button extends Block {
         element?.addEventListener('click', (e) => {
             if (url) {
                 e.preventDefault();
-                window.router.go(url);
+                globalRouter.go(url);
             }
         });
     }

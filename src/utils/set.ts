@@ -1,5 +1,5 @@
 import { isObject } from './isObject';
-/* eslint-disable no-param-reassign */
+
 type Indexed<T = unknown> = {
     [key in string]: T;
 };

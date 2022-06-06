@@ -1,6 +1,6 @@
-export const queryStringify = (data: Record<string, any>) => {
+export const queryStringify = (data: Record<string, any>): string => {
     if (!data) {
-        return;
+        return '';
     }
 
     let str = '?';
@@ -8,7 +8,6 @@ export const queryStringify = (data: Record<string, any>) => {
     const arrayOfData = Object.keys(data);
 
     if (!arrayOfData.length) {
-        // eslint-disable-next-line consistent-return
         return '';
     }
 
@@ -16,6 +15,5 @@ export const queryStringify = (data: Record<string, any>) => {
         str += `${key}=${data[key]}&`;
     });
 
-    // eslint-disable-next-line consistent-return
     return str.substring(0, str.length - 1);
 };

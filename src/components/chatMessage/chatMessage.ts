@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import Block from '../../core/Block';
 import './chatMessage.scss';
 import { ChatMessageProps } from '../../core/types';

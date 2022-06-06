@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable max-classes-per-file */
-/* eslint-disable @typescript-eslint/no-extra-semi */
 import 'global-jsdom/register';
 import { expect } from 'chai';
 import { Router } from './Router';
@@ -12,22 +8,25 @@ describe('Тестирование роутера', () => {
         render() {
             return '<div id="sign-in"></div>';
         }
-    };
+    }
+
     class SignUp extends Block {
         render() {
             return '<div id="sign-up"></div>';
         }
-    };
+    }
+
     class Settings extends Block {
         render() {
             return '<div id="settings"></div>';
         }
-    };
+    }
+
     class Messenger extends Block {
         render() {
             return '<div id="messenger"></div>';
         }
-    };
+    }
 
     const router = new Router();
 
