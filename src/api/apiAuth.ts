@@ -8,13 +8,10 @@ export class apiAuth {
         return http.post('/auth/signin', {
             data,
             headers: { 'Content-Type': 'application/json' },
-            timeout: 0,
         });
     }
 
     static logout() {
-        return http.post('/auth/logout', {
-            timeout: 0,
-        });
+        return http.post('/auth/logout', {});
     }
 }
