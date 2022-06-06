@@ -1,5 +1,5 @@
 import { register } from '../../services/user';
-import { userType } from '../../core/types';
+import { User } from '../../core/types';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
 
@@ -72,7 +72,7 @@ export class RegisterPage extends Block {
                 text: 'Войти',
                 url: '/sign-in',
             },
-            onSubmit: (data: userType) => {
+            onSubmit: (data: User) => {
                 register(data);
             },
         };

@@ -80,25 +80,18 @@ export type Indexed<T = unknown> = {
     [key in string]: T;
 };
 
-export type AppState<T = unknown> = {
-    [key in string]: T;
+export type AppState = {
+    user?: User | null,
+    isLoadApp?: boolean,
+    chats?: Array<Chat> | [],
+    currentChat?: Chat | null,
+    messages?: Array<Message> | [],
+    isLoadedMessages?: boolean,
 };
 
 export type loginType = {
     login: string,
     password: string
-}
-
-export type userType = {
-    first_name?: string,
-    second_name?: string,
-    login?: string,
-    email?: string,
-    password?: string,
-    phone?: string,
-    display_name?: string,
-    avatar?: string | null,
-    id?: number,
 }
 
 export type passwordType = {
@@ -112,7 +105,16 @@ export type Chat = {
     avatar?: string,
     unread_count?: number,
     last_message?: any,
+    users?: Array<User> | null,
 }
+
+export type Message = {
+    author: User | null,
+    text: string,
+    created: string,
+    you?: boolean,
+    isRead?: boolean,
+  };
 
 export type User = {
     id?: number,
@@ -124,6 +126,10 @@ export type User = {
     avatar?: string,
     phone?: string,
     you?: boolean,
+}
+
+export type ChatToken = {
+    token: string
 }
 
 export type ChatListProps = {

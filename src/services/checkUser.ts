@@ -1,3 +1,4 @@
+import { User } from '../core/types';
 import { Store } from '../core/Store';
 import { isError } from '../utils/apiCheck';
 import { apiUser } from '../api';
@@ -6,7 +7,7 @@ const globalStore = new Store();
 
 export const checkUser = async () => {
     try {
-        const userInfo = await apiUser.getUserInfo();
+        const userInfo: User = await apiUser.getUserInfo() as User;
 
         if (isError(userInfo)) {
             globalStore.set({

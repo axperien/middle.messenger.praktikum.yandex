@@ -1,10 +1,10 @@
-import { userType, passwordType } from '../core/types';
+import { User, passwordType } from '../core/types';
 import { HTTPTransport } from '../core/HTTPTransport';
 
 const http = new HTTPTransport();
 
 export class apiUser {
-    static register(data: userType) {
+    static register(data: User) {
         return http.post('/auth/signup', {
             data,
             headers: { 'Content-Type': 'application/json' },
@@ -15,7 +15,7 @@ export class apiUser {
         return http.get('/auth/user', {});
     }
 
-    static editUser(data: userType) {
+    static editUser(data: User) {
         return http.put('/user/profile', {
             data,
             headers: { 'Content-Type': 'application/json' },

@@ -3,7 +3,7 @@ import { Store } from '../core/Store';
 import { getChatsList } from './chats';
 import { apiUser } from '../api';
 import { isError } from '../utils/apiCheck';
-import { loginType, APIError } from '../core/types';
+import { loginType, APIError, User } from '../core/types';
 import { apiAuth } from '../api/apiAuth';
 
 const globalStore = new Store();
@@ -34,7 +34,7 @@ export const login = async (data: loginType) => {
         alert(error.reason);
     }
 
-    const responseUser = await apiUser.getUserInfo();
+    const responseUser: User = await apiUser.getUserInfo() as User;
 
     if (isError(responseUser)) {
         logout();

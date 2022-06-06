@@ -1,3 +1,4 @@
+import { Message } from '../core/types';
 import { Store } from '../core/Store';
 import { getChatsList } from './chats';
 import { transformMessage } from '../utils/apiTransform';
@@ -53,20 +54,19 @@ export class Socket {
         const response = JSON.parse(e.data);
 
         if (!isPing(response) && !isUserConnected(response)) {
-            const { messages } = globalStore.getState() || [];
+            const messages: Array<Message> = globalStore.getState().messages as Array<Message>;
 
             if (response instanceof Array) {
                 response.forEach((value) => {
-                    // @ts-ignore
                     messages.push(transformMessage(value));
                 });
             } else {
-                // @ts-ignore
                 messages.unshift(transformMessage(response));
             }
 
             globalStore.set({
                 messages,
+                isLoadedMessages: true,
             });
 
             getChatsList();

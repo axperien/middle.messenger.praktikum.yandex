@@ -1,14 +1,14 @@
 import { Router } from '../core/Router';
 import { Store } from '../core/Store';
 import { isError } from '../utils/apiCheck';
-import { userType, APIError } from '../core/types';
+import { APIError, User } from '../core/types';
 import { apiUser } from '../api';
 
 const globalRouter = new Router();
 
 const globalStore = new Store();
 
-export const register = async (data: userType) => {
+export const register = async (data: User) => {
     const response = await apiUser.register(data);
 
     if (isError(response)) {
@@ -23,7 +23,7 @@ export const register = async (data: userType) => {
         return;
     }
 
-    const responseUser = await apiUser.getUserInfo();
+    const responseUser: User = await apiUser.getUserInfo() as User;
 
     if (isError(responseUser)) {
         globalRouter.go('/sign-in');
@@ -54,12 +54,14 @@ export const getUserInfo = async () => {
         return;
     }
 
+    const user: User = response as User;
+
     globalStore.set({
-        user: response,
+        user,
     });
 };
 
-export const editUser = async (data: userType) => {
+export const editUser = async (data: User) => {
     const response = await apiUser.editUser(data);
 
     if (isError(response)) {
@@ -69,8 +71,10 @@ export const editUser = async (data: userType) => {
         return;
     }
 
+    const user: User = response as User;
+
     globalStore.set({
-        user: response,
+        user,
     });
 };
 

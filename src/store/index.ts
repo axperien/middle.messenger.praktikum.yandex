@@ -5,5 +5,6 @@ export const initialState: AppState = {
     isLoadApp: false,
     chats: [],
     currentChat: null,
-    messages: null,
+    messages: [],
+    isLoadedMessages: false,
 };

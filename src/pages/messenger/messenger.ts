@@ -76,8 +76,8 @@ export class ChatsPage extends Block {
                         {{#if store.currentChat }}
                             {{{ ChatInfo avatar=store.currentChat.avatar name=store.currentChat.title }}}
                             <div class="dialog__messages">
-                                {{#if (eq store.messages null)}}
-                                        {{{ Loader }}}
+                                {{#if (eq store.isLoadedMessages false)}}
+                                    {{{ Loader }}}
                                 {{else}}
                                     {{#each store.messages }}
                                         {{{ 
