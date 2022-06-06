@@ -12,13 +12,29 @@ $radius: 12px;
         margin-top: 20px;
     }
 
+    &__time {
+        position: absolute;
+        right: 10px;
+        bottom: 6px;
+        color: $c-gray;
+
+        font-size: 8px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: $transition;
+
+        .message__image + & {
+            padding: 0 6px;
+            color: $c-white;
+            background: rgb(82 82 82 / 50%);
+            border-radius: $radius;
+        }
+    }
+
     &__box {
         position: relative;
         display: flex;
         flex-direction: column;
-
-        .message--user & {
-        }
 
         .message--self & {
             margin-left: auto;
@@ -44,25 +60,6 @@ $radius: 12px;
         .message--self & {
             background-color: $c-message-self;
             border-bottom-right-radius: 0;
-        }
-    }
-
-    &__time {
-        position: absolute;
-        right: 10px;
-        bottom: 6px;
-        color: $c-gray;
-
-        font-size: 8px;
-        white-space: nowrap;
-        opacity: 0;
-        transition: $transition;
-
-        .message__image + & {
-            padding: 0 6px;
-            color: $c-white;
-            background: rgb(82 82 82 / 50%);
-            border-radius: $radius;
         }
     }
 

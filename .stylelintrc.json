@@ -4,7 +4,11 @@
   "rules": {
     "color-hex-case": "lower",
     "declaration-empty-line-before": null,
-    "indentation": 4
+    "indentation": 4,
+    "at-rule-no-unknown": null,
+    "media-feature-name-no-unknown": null,
+    "font-family-no-duplicate-names": null,
+    "selector-class-pattern": null
   },
   "ignoreFiles": [
     "dist/*"
