@@ -17,14 +17,9 @@
     "start": "npm run build && node server.js",
     "build": "parcel build index.html",
     "dev": "parcel index.html -p 3000 --no-cache --open chrome",
-    "test": "mocha"
+    "test": "TS_NODE_PROJECT='tsconfig.json' mocha"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.10",
-    "@babel/core": "^7.18.2",
-    "@babel/preset-env": "^7.18.2",
-    "@babel/preset-typescript": "^7.17.12",
-    "@babel/register": "^7.17.7",
     "@parcel/babel-preset-env": "^2.6.0",
     "@parcel/config-default": "~2.4.1",
     "@parcel/core": "^2.5.0",
@@ -55,6 +50,7 @@
     "stylelint-order": "^5.0.0",
     "stylelint-prettier": "^2.0.0",
     "stylelint-scss": "^4.2.0",
+    "ts-node": "^10.8.1",
     "typescript": "^4.6.4"
   },
   "dependencies": {
