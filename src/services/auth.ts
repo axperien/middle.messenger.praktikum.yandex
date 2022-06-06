@@ -1,6 +1,5 @@
 import { getChatsList } from './chats';
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import { apiUser } from '../api/apiUser';
+import { apiUser } from '../api';
 import { isError } from '../utils/apiCheck';
 import { loginType } from '../core/types';
 import { apiAuth } from '../api/apiAuth';

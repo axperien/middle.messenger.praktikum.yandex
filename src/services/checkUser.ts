@@ -1,5 +1,5 @@
 import { isError } from '../utils/apiCheck';
-import { apiUser } from '../api/apiUser';
+import { apiUser } from '../api';
 
 export const checkUser = async () => {
     try {

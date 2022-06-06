@@ -1,11 +1,7 @@
-/* eslint-disable prefer-destructuring */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable no-alert */
 import { transformChat } from '../utils/apiTransform';
-import { apiUser } from '../api/apiUser';
+import { apiUser, apiChat } from '../api';
 import { User } from '../core/types';
 import { isError } from '../utils/apiCheck';
-import { apiChat } from '../api/apiChat';
 import socket from './webSocket';
 
 export const getChatsList = async () => {

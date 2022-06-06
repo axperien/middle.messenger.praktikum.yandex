@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable no-alert */
 import { isError } from '../utils/apiCheck';
 import { userType, passwordType } from '../core/types';
-import { apiUser } from '../api/apiUser';
+import { apiUser } from '../api';
 
 export const register = async (data: userType) => {
     const response = await apiUser.register(data);
