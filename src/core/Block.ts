@@ -42,7 +42,6 @@ export default class Block<P = any> {
         const eventBus = new EventBus<Events>();
 
         this.getStateFromProps(props);
-        // this.getPropsFromState(this.state);
 
         this.props = this._makePropsProxy(props || {} as P);
         this.state = this._makePropsProxy(this.props);
