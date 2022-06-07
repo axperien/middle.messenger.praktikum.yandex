@@ -1,3 +1,4 @@
+import { transformUser } from '../utils/apiTransform';
 import { User } from '../core/types';
 import { Store } from '../core/Store';
 import { isError } from '../utils/apiCheck';
@@ -19,7 +20,7 @@ export const checkUser = async () => {
         }
 
         globalStore.set({
-            user: userInfo,
+            user: transformUser(userInfo),
             isLoadApp: true,
         });
     } catch (e) {

@@ -4,9 +4,10 @@ export type Keys<T extends Record<string, unknown>> = keyof T;
 export type Values<T extends Record<string, unknown>> = T[Keys<T>];
 
 export type AvatarProps = {
-    image: string,
-    imageX2: string,
-    overlayText: string
+    image?: string,
+    overlayText?: string,
+    modalId?: string,
+    onClick?: () => void,
 }
 
 export type BackUrlProps = {
@@ -100,7 +101,7 @@ export type passwordType = {
 }
 
 export type Chat = {
-    id?: number,
+    id: number,
     title?: string,
     avatar?: string,
     unread_count?: number,
@@ -114,14 +115,29 @@ export type Message = {
     created: string,
     you?: boolean,
     isRead?: boolean,
-  };
+};
+
+export type MessageData = {
+    user: User,
+    user_id?: number,
+    content: string,
+    time: Date,
+    is_read?: boolean,
+};
+
+export type ChatData = {
+    id: number,
+    title: string,
+    avatar: string,
+    last_message: MessageData,
+};
 
 export type User = {
     id?: number,
     login?: string,
-    firstName?: string,
-    lastName?: string,
-    displayName?: string,
+    first_name?: string,
+    second_name?: string,
+    display_name?: string,
     email?: string,
     avatar?: string,
     phone?: string,
@@ -157,4 +173,19 @@ export type ChatInfoProps = {
 
 export type APIError = {
     reason: string;
+}
+
+export type ModalProps = {
+    id: string,
+    modal: {
+        isOpen: boolean,
+        modalId: number | null,
+    },
+    type?: string,
+    callback?: () => void,
+}
+
+export type ModalAvatarProps = {
+    type?: string,
+    callback?: () => void,
 }

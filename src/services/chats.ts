@@ -1,7 +1,7 @@
 import { Store } from '../core/Store';
-import { transformChat } from '../utils/apiTransform';
+import { transformChat, getAvatar } from '../utils/apiTransform';
 import { apiUser, apiChat } from '../api';
-import { User, APIError, Indexed, Chat, ChatToken } from '../core/types';
+import { User, APIError, Indexed, Chat, ChatToken, ChatData } from '../core/types';
 import { isError } from '../utils/apiCheck';
 import socket from './webSocket';
 
@@ -16,7 +16,7 @@ export const getChatsList = async () => {
 
     const chats: Array<Chat> = [];
 
-    (response as Array<Chat>).forEach((r) => {
+    (response as Array<Chat>).forEach((r: ChatData) => {
         chats.push(transformChat(r));
     });
 
@@ -168,4 +168,26 @@ export const deleteChatUser = async (userId: number) => {
 
         getCurrentChatInfo();
     }
+};
+
+export const uploadChatAvatar = async (data: FormData) => {
+    const response = await apiChat.uploadAvatar(data);
+
+    if (isError(response)) {
+        const error = response as APIError;
+        alert(error.reason);
+
+        return;
+    }
+
+    getCurrentChatInfo();
+
+    const store = globalStore.getState();
+    const currentChat: Chat = store.currentChat as Chat;
+
+    currentChat.avatar = getAvatar((response as ChatData).avatar);
+
+    globalStore.set({
+        currentChat,
+    });
 };

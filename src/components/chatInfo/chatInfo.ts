@@ -10,8 +10,7 @@ export class ChatInfo extends Block<ChatInfoProps> {
             <div class="dialog__header">
                 {{{ 
                     Avatar 
-                        image=avatar.image
-                        image_x2=avatar.image_x2
+                        image=avatar
                 }}}
                 <div class="dialog__name">{{ name }}</div>
                 <div class="dialog__menu">

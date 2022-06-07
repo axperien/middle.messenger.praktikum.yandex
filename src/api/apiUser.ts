@@ -35,4 +35,10 @@ export class apiUser {
             headers: { 'Content-Type': 'application/json' },
         });
     }
+
+    static uploadAvatar(data: FormData) {
+        return http.put('/user/profile/avatar', {
+            data,
+        });
+    }
 }

@@ -13,6 +13,8 @@ import { ChatInfo } from '../components/chatInfo/chatInfo';
 import { ChatForm } from '../components/chatForm/chatForm';
 import { ChatMessage } from '../components/chatMessage/chatMessage';
 import { Loader } from '../components/Loader/loader';
+import { Modal } from '../components/modal/modal';
+import { ModalAvatar } from '../components/modalAvatar/modalAvatar';
 
 registerComponent(Button);
 registerComponent(Field);
@@ -27,3 +29,5 @@ registerComponent(ChatInfo);
 registerComponent(ChatForm);
 registerComponent(ChatMessage);
 registerComponent(Loader);
+registerComponent(Modal);
+registerComponent(ModalAvatar);

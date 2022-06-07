@@ -45,6 +45,30 @@ export class ChatsEditPage extends Block {
                     }
                 }
             },
+            onAvatarClick: (e: Event) => {
+                const target = e.target as HTMLElement;
+
+                if (target) {
+                    const modalId = target.dataset.modalId;
+
+                    if (modalId) {
+                        this.setProps({
+                            modal: {
+                                isOpen: true,
+                                modalId,
+                            },
+                        });
+                    }
+                }
+            },
+            isAvatarChanged: () => {
+                this.setProps({
+                    modal: {
+                        isOpen: false,
+                        modalId: null,
+                    },
+                });
+            },
         });
     }
 
@@ -63,6 +87,13 @@ export class ChatsEditPage extends Block {
                 <div class="chats">
                     {{{ BackUrl }}}
                     <div class="chats__form">
+                        {{{ 
+                            Avatar 
+                                image=store.currentChat.avatar
+                                overlayText="Поменять аватар"
+                                modalId="changeAvatar"
+                                onClick=onAvatarClick
+                        }}}
                         <div class="chats__form-group">
                             <h1>«{{ store.currentChat.title }}»</h1>
                         </div>
@@ -111,6 +142,7 @@ export class ChatsEditPage extends Block {
                             }}}
                         </div>
                     </div>
+                    {{{ Modal id="changeAvatar" type="chat" modal=modal callback=isAvatarChanged }}}
                 </div>
             {{else}}
                 {{{ Loader }}}

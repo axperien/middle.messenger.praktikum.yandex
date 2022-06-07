@@ -1,3 +1,4 @@
+import { transformUser } from '../utils/apiTransform';
 import { Router } from '../core/Router';
 import { Store } from '../core/Store';
 import { isError } from '../utils/apiCheck';
@@ -32,7 +33,7 @@ export const register = async (data: User) => {
     }
 
     globalStore.set({
-        user: responseUser,
+        user: transformUser(responseUser),
         isLoadApp: true,
     });
 
@@ -54,7 +55,7 @@ export const getUserInfo = async () => {
         return;
     }
 
-    const user: User = response as User;
+    const user: User = transformUser(response as User);
 
     globalStore.set({
         user,
@@ -71,7 +72,7 @@ export const editUser = async (data: User) => {
         return;
     }
 
-    const user: User = response as User;
+    const user: User = transformUser(response as User);
 
     globalStore.set({
         user,
@@ -87,4 +88,21 @@ export const ediPassword = async (data: any) => {
     }
 
     return response;
+};
+
+export const uploadUserAvatar = async (data: FormData) => {
+    const response = await apiUser.uploadAvatar(data);
+
+    if (isError(response)) {
+        const error = response as APIError;
+        alert(error.reason);
+
+        return;
+    }
+
+    const user: User = transformUser(response as User);
+
+    globalStore.set({
+        user,
+    });
 };

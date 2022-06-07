@@ -42,4 +42,10 @@ export class apiChat {
             headers: { 'Content-Type': 'application/json' },
         });
     }
+
+    static uploadAvatar(data: FormData) {
+        return http.put('/chats/avatar', {
+            data,
+        });
+    }
 }

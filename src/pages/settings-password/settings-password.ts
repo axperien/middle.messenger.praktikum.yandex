@@ -62,6 +62,30 @@ export class UserEditPasswordPage extends Block {
                         });
                 }
             },
+            onAvatarClick: (e: Event) => {
+                const target = e.target as HTMLElement;
+
+                if (target) {
+                    const modalId = target.dataset.modalId;
+
+                    if (modalId) {
+                        this.setProps({
+                            modal: {
+                                isOpen: true,
+                                modalId,
+                            },
+                        });
+                    }
+                }
+            },
+            isAvatarChanged: () => {
+                this.setProps({
+                    modal: {
+                        isOpen: false,
+                        modalId: null,
+                    },
+                });
+            },
         });
     }
 
@@ -75,6 +99,8 @@ export class UserEditPasswordPage extends Block {
                             Avatar 
                                 image=store.user.avatar
                                 overlayText="Поменять аватар"
+                                modalId="changeAvatar"
+                                onClick=onAvatarClick
                         }}}
                         <h3 class='user__name'>{{ store.user.first_name }}</h3>
                         <form action='' class='user__form'>
@@ -112,6 +138,7 @@ export class UserEditPasswordPage extends Block {
                             </div>
                         </form>
                     </div>
+                    {{{ Modal id="changeAvatar" type="user" modal=modal callback=isAvatarChanged }}}
                 </div>
             {{else}}
                 {{{ Loader }}}

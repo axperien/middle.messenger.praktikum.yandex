@@ -71,7 +71,8 @@ export class HTTPTransport {
             if (method === Methods.GET || !data) {
                 xhr.send();
             } else {
-                xhr.send(JSON.stringify(data));
+                const isFormData = data instanceof FormData;
+                xhr.send((isFormData) ? data : JSON.stringify(data));
             }
         });
 
