@@ -78,14 +78,11 @@ export class ChatsEditPage extends Block {
         });
     }
 
-    componentDidMount(props: any): boolean {
+    componentDidMount(props: any) {
         if (!globalStore || (!globalStore.getState().currentChat
             && !globalStore.getState().isLoadApp)) {
             globalRouter.go('/messenger');
-            return false;
         }
-
-        return true;
     }
 
     render(): string {
