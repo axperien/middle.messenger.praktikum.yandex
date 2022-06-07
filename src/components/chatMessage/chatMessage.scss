@@ -82,6 +82,15 @@ $radius: 12px;
             border-bottom-right-radius: 0;
         }
     }
+
+    &__author {
+        margin-bottom: 2px;
+        font-weight: bold;
+
+        .message--self & {
+            display: none;
+        }
+    }
 }
 
 .message--self + .message--self,

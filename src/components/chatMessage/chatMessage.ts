@@ -9,6 +9,15 @@ export class ChatMessage extends Block<ChatMessageProps> {
         return `
             <div class="message message--{{#if (eq you true)}}self{{else}}user{{/if}}">
                 <div class="message__box">
+                    {{#if author }}
+                        <div class="message__author">
+                            {{#if (ne author.display_name '') }}
+                                {{ author.display_name }}
+                            {{else}}
+                                {{ author.login }}
+                            {{/if}}
+                        </div>
+                    {{/if}}
                     {{#if text }}
                         <div class="message__text">{{ text }}</div>
                     {{/if}}
