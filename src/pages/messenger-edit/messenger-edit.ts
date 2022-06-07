@@ -1,6 +1,6 @@
 import { Router } from '../../core/Router';
 import { Store } from '../../core/Store';
-import { addUserToChat, deleteChat, deleteChatUser } from '../../services/chats';
+import { addUserToChat, deleteChat, deleteChatUser } from '../../controllers/chats';
 
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';

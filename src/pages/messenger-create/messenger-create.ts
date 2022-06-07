@@ -2,7 +2,7 @@ import { Indexed } from '../../core/types';
 import { Router } from '../../core/Router';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
-import { createChat } from '../../services/chats';
+import { createChat } from '../../controllers/chats';
 
 const globalRouter = new Router();
 

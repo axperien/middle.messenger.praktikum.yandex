@@ -1,7 +1,7 @@
 import { Chat } from './types';
 import { Store } from './Store';
-import { uploadChatAvatar } from '../services/chats';
-import { uploadUserAvatar } from '../services/user';
+import { uploadChatAvatar } from '../controllers/chats';
+import { uploadUserAvatar } from '../controllers/user';
 
 const globalStore = new Store();
 

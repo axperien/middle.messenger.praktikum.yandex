@@ -1,4 +1,4 @@
-import { checkUser } from './services/checkUser';
+import { checkUser } from './controllers/checkUser';
 import { Router } from './core/Router';
 
 import pageHome from './pages/home';

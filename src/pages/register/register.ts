@@ -1,4 +1,4 @@
-import { register } from '../../services/user';
+import { register } from '../../controllers/user';
 import { User } from '../../core/types';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';

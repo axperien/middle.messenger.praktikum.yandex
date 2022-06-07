@@ -1,6 +1,6 @@
 import { Router } from '../../core/Router';
 import { loginType } from '../../core/types';
-import { login } from '../../services/auth';
+import { login } from '../../controllers/auth';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
 

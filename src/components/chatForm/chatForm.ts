@@ -1,4 +1,4 @@
-import { sendMessage } from '../../services/chats';
+import { sendMessage } from '../../controllers/chats';
 import Block from '../../core/Block';
 import './chatForm.scss';
 import { ChatFormProps, Indexed } from '../../core/types';

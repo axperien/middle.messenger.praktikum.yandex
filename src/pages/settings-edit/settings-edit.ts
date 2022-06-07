@@ -1,6 +1,6 @@
 import { Router } from '../../core/Router';
 import { Indexed } from '../../core/types';
-import { editUser } from '../../services/user';
+import { editUser } from '../../controllers/user';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
 

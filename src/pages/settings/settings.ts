@@ -1,4 +1,4 @@
-import { logout } from '../../services/auth';
+import { logout } from '../../controllers/auth';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
 

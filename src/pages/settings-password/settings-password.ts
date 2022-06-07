@@ -3,7 +3,7 @@ import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
 import { Indexed } from '../../core/types';
 import { checkFormFieldError } from '../../core/validator';
-import { ediPassword } from '../../services/user';
+import { ediPassword } from '../../controllers/user';
 import { isError } from '../../utils/apiCheck';
 
 const globalRouter = new Router();
