@@ -1,5 +1,6 @@
-import 'global-jsdom/register';
 import { expect } from 'chai';
+import { renderDOM } from './renderDOM';
+import 'global-jsdom/register';
 import Block from './Block';
 
 describe('Тестирование блока', () => {
@@ -10,8 +11,8 @@ describe('Тестирование блока', () => {
     }
 
     class TestWithProps extends Block {
-        constructor() {
-            super();
+        constructor({ title = '' }) {
+            super({ title });
 
             this.setProps({
                 testValue: 123,
@@ -27,16 +28,35 @@ describe('Тестирование блока', () => {
         document.body.innerHTML = '<div id="app"></div>';
     });
 
-    it('Блок создается', () => {
+    it('Блок рендерит html', () => {
         const TestBlock = new Test();
         const content = TestBlock.render();
         expect(content).to.be.equal('<div id="test"></div>');
     });
 
-    it('У блока есть пропсы', () => {
-        const TestBlock = new TestWithProps();
+    it('Блок монтируется', () => {
+        const TestBlock = new Test();
 
-        // @ts-ignore
+        renderDOM(TestBlock);
+        const appElement = document.getElementById('app');
+        const mountedElement = appElement?.querySelector('#test');
+
+        expect(mountedElement).to.not.be.null;
+    });
+
+    it('У блока есть пропсы из конструктора', () => {
+        const TestBlock = new TestWithProps({
+            title: 'test',
+        });
+
+        expect(TestBlock.props.title).to.be.eq('test');
+    });
+
+    it('У блока есть "свои" пропсы', () => {
+        const TestBlock = new TestWithProps({
+            title: 'test',
+        });
+
         expect(TestBlock.props.testValue).to.be.eq(123);
     });
 });

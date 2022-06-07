@@ -17,7 +17,7 @@
     "start": "npm run build && node server.js",
     "build": "parcel build index.html",
     "dev": "parcel index.html -p 3000 --no-cache --open chrome",
-    "test": "TS_NODE_PROJECT='tsconfig.json' mocha"
+    "test": "mocha --require ts-node/register src/**/*.test.ts"
   },
   "devDependencies": {
     "@parcel/babel-preset-env": "^2.6.0",

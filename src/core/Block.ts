@@ -6,10 +6,6 @@ import { Router } from './Router';
 
 const globalRouter = new Router();
 
-interface BlockMeta<P = any> {
-  props: P;
-}
-
 type Events = Values<typeof Block.EVENTS>;
 
 export default class Block<P = any> {
@@ -24,7 +20,7 @@ export default class Block<P = any> {
 
     protected _element: Nullable<HTMLElement> = null;
 
-    protected readonly props: P;
+    props: P;
 
     protected children: {[id: string]: Block} = {};
 
@@ -82,7 +78,7 @@ export default class Block<P = any> {
         this.componentDidMount(props);
     }
 
-    componentDidMount(props: P) {
+    componentDidMount(_props: P) {
 
     }
 
@@ -96,7 +92,7 @@ export default class Block<P = any> {
         this._render();
     }
 
-    componentDidUpdate(oldProps: P, newProps: P) {
+    componentDidUpdate(_oldProps: P, _newProps: P) {
         if (this.needCheckAuth) {
             const { store } = this.props as Record<string, any>;
 

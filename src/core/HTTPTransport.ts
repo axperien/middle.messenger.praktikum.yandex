@@ -1,5 +1,5 @@
 import { queryStringify } from './helpers';
-import { HTTPTransportOptions, APIError } from './types';
+import { HTTPTransportOptions } from './types';
 
 export enum Methods {
     GET = 'GET',
@@ -58,6 +58,7 @@ export class HTTPTransport {
                 });
             }
 
+            xhr.timeout = timeout;
             xhr.withCredentials = true;
 
             xhr.onload = function () {
