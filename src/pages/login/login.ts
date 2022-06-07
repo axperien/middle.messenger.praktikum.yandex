@@ -1,10 +1,7 @@
-import { Router } from '../../core/Router';
 import { loginType } from '../../core/types';
 import { login } from '../../services/auth';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
-
-const globalRouter = new Router();
 
 export class LoginPage extends Block {
     pageTitle = 'Авторизация';
@@ -45,17 +42,6 @@ export class LoginPage extends Block {
         };
 
         this.setProps(pageProps);
-    }
-
-    componentDidUpdate(): boolean {
-        const { store } = this.state;
-
-        if (store && store.user !== null) {
-            globalRouter.go('/messenger');
-            return false;
-        }
-
-        return true;
     }
 
     render(): string {
