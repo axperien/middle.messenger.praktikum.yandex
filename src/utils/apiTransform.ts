@@ -18,6 +18,18 @@ const findUser = (id: number): User | null => {
     return result;
 };
 
+const isYouMessage = (user: User) => {
+    const currentUserLogin = globalStore.getState().user?.login;
+
+    if (currentUserLogin) {
+        if (currentUserLogin === user.login) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
 export const getAvatar = (avatar: string | undefined): string => ((avatar) ? `https://ya-praktikum.tech/api/v2/resources${avatar}` : '');
 
 export const transformUser = (data: User) => ({
@@ -44,7 +56,7 @@ export const transformLastMessage = (data: MessageData) => ({
     text: decodeURIComponent(data.content),
     from: data.user.display_name ? data.user.display_name : data.user.login,
     created: new Date(data.time).toLocaleDateString(undefined, { day: 'numeric', month: 'numeric' }),
-    you: (data.user.login) ? data.user.login === globalStore.getState().user?.login : false,
+    you: isYouMessage(data.user),
 });
 
 export const transformChat = (data: Chat) => ({

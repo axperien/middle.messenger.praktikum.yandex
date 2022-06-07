@@ -31,7 +31,7 @@ export class ChatList extends Block<ChatListProps> {
                         <div class="chats__content">
                             <div class="chats__head">
                                 <p class="chats__name">{{ title }}</p>
-                                <span class="chats__time">{{ last_message.time }}</span>
+                                <span class="chats__time">{{ lastMessage.created }}</span>
                             </div>
 
                             {{#if lastMessage}}

@@ -15,8 +15,6 @@ export class ChatsPage extends Block {
     constructor() {
         super();
 
-        getChatsList();
-
         this.setProps({
             onSelectChat: (e: Event) => {
                 const target = e.target as HTMLElement | null;

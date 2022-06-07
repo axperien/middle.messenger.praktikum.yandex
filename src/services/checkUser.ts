@@ -1,3 +1,4 @@
+import { getChatsList } from './chats';
 import { transformUser } from '../utils/apiTransform';
 import { User } from '../core/types';
 import { Store } from '../core/Store';
@@ -23,6 +24,8 @@ export const checkUser = async () => {
             user: transformUser(userInfo),
             isLoadApp: true,
         });
+
+        getChatsList();
     } catch (e) {
         throw new Error(e);
     }

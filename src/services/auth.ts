@@ -1,3 +1,4 @@
+import { transformUser } from '../utils/apiTransform';
 import { Router } from '../core/Router';
 import { Store } from '../core/Store';
 import { getChatsList } from './chats';
@@ -47,7 +48,7 @@ export const login = async (data: loginType) => {
     }
 
     globalStore.set({
-        user: responseUser,
+        user: transformUser(responseUser),
         isLoadApp: true,
     });
 
