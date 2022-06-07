@@ -79,7 +79,8 @@ export class ChatsEditPage extends Block {
     }
 
     componentDidMount(props: any): boolean {
-        if (!globalStore || !globalStore.getState().currentChat) {
+        if (!globalStore || (!globalStore.getState().currentChat
+            && !globalStore.getState().isLoadApp)) {
             globalRouter.go('/messenger');
             return false;
         }
@@ -88,7 +89,6 @@ export class ChatsEditPage extends Block {
     }
 
     render(): string {
-        console.log(this.props);
         return `
             {{#if store.isLoadApp}}
                 <div class="chats">
