@@ -107,6 +107,7 @@ export type Chat = {
     unread_count?: number,
     last_message?: any,
     users?: Array<User> | null,
+    isAdmin?: boolean,
 }
 
 export type Message = {

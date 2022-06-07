@@ -1,6 +1,6 @@
 import { Router } from '../../core/Router';
 import { Store } from '../../core/Store';
-import { addUserToChat, deleteChatUser } from '../../services/chats';
+import { addUserToChat, deleteChat, deleteChatUser } from '../../services/chats';
 
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
@@ -45,6 +45,12 @@ export class ChatsEditPage extends Block {
                     }
                 }
             },
+            onDeleteChat: () => {
+                deleteChat()
+                    .then(() => {
+                        globalRouter.go('/messenger');
+                    });
+            },
             onAvatarClick: (e: Event) => {
                 const target = e.target as HTMLElement;
 
@@ -82,6 +88,7 @@ export class ChatsEditPage extends Block {
     }
 
     render(): string {
+        console.log(this.props);
         return `
             {{#if store.isLoadApp}}
                 <div class="chats">
@@ -102,7 +109,7 @@ export class ChatsEditPage extends Block {
                             {{#each store.currentChat.users }}
                                 <div class="chats__form-user" data-user-id="{{ id }}">
                                     <p>{{ login }} <b>({{ first_name }} {{ second_name}})</b></p>
-                                    {{#if (eq role 'admin')}}
+                                    {{#if (eq id ../store.user.id)}}
                                         Вы
                                     {{else}}
                                         {{{
@@ -134,19 +141,22 @@ export class ChatsEditPage extends Block {
                                     onClick=onAddUser
                             }}}
                         </div>
-                        <div class="chats__buttons">
-                            {{{
-                                Link
-                                    cls="link--red"
-                                    text="Удалить чат"
-                            }}}
-                        </div>
+                        {{#if (eq store.currentChat.isAdmin true)}}
+                            <div class="chats__buttons">
+                                {{{
+                                    Link
+                                        cls="link--red"
+                                        text="Удалить чат"
+                                        onClick=onDeleteChat
+                                }}}
+                            </div>
+                        {{/if}}
                     </div>
                     {{{ Modal id="changeAvatar" type="chat" modal=modal callback=isAvatarChanged }}}
                 </div>
             {{else}}
                 {{{ Loader }}}
-            {{/if}}   
+            {{/if}}
         `;
     }
 }

@@ -48,4 +48,11 @@ export class apiChat {
             data,
         });
     }
+
+    static deleteChat(data: any) {
+        return http.delete('/chats', {
+            data,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    }
 }

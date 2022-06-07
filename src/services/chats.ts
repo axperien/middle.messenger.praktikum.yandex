@@ -48,16 +48,25 @@ export const getCurrentChatInfo = async () => {
 
         const id = currentChat.id as number;
         const response = await apiChat.getChatUser(id);
+        let isAdmin = false;
 
         if (!isError(response)) {
             if (response && Array.isArray(response) && response.length) {
                 response.forEach((chatUser) => {
+                    const { role } = chatUser;
+                    const userId = chatUser.id;
+
+                    if (role === 'admin' && userId === user.id) {
+                        isAdmin = true;
+                    }
+
                     chatUsers.push(chatUser);
                 });
             }
         }
 
         currentChat.users = chatUsers;
+        currentChat.isAdmin = isAdmin;
 
         const responseToken = await apiChat.getToken(id);
 
@@ -190,4 +199,32 @@ export const uploadChatAvatar = async (data: FormData) => {
     globalStore.set({
         currentChat,
     });
+};
+
+export const deleteChat = async () => {
+    const store = globalStore.getState();
+    const currentChat: Chat = store.currentChat as Chat;
+
+    if (currentChat) {
+        const chatId = currentChat.id;
+
+        const data = {
+            chatId,
+        };
+
+        const response = await apiChat.deleteChat(data);
+
+        if (isError(response)) {
+            const error = response as APIError;
+            alert(error.reason);
+
+            return;
+        }
+
+        globalStore.set({
+            currentChat: null,
+        });
+
+        getChatsList();
+    }
 };
