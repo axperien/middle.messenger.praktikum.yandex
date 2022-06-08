@@ -1,16 +1,30 @@
+import { Router } from '../../core/Router';
 import Block from '../../core/Block';
 import './link.scss';
 import { LinkProps } from '../../core/types';
+
+const globalRouter = new Router();
 
 export class Link extends Block<LinkProps> {
     public static componentName = 'Link';
 
     constructor({
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
         text, cls, url, onClick = () => {},
     }: LinkProps) {
         super({
             text, cls, url, onClick, events: { click: onClick },
+        });
+    }
+
+    addEvents():void {
+        const { url } = this.props;
+        const element = this._element;
+
+        element?.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (url) {
+                globalRouter.go(url);
+            }
         });
     }
 

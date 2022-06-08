@@ -1,54 +1,40 @@
+import { checkUser } from './controllers/checkUser';
+import { Router } from './core/Router';
+
+import pageHome from './pages/home';
+import pageLogin from './pages/login';
+import pageRegister from './pages/register';
+import page500 from './pages/500';
+import page404 from './pages/404';
+import pageSettings from './pages/settings';
+import pageSettingsEdit from './pages/settings-edit';
+import pagePasswordEdit from './pages/settings-password';
+import pageChats from './pages/messenger';
+import pageChatsCreate from './pages/messenger-create';
+import pageChatsEdit from './pages/messenger-edit';
+
 import './scss/main.scss';
 
 import './core/registerHelpers';
-import registerComponent from './core/registerComponents';
-import { getCurrentPage } from './core/routing';
+import './core/registerPartials';
 
-import { Button } from './components/button/button';
-import { Field } from './components/field/field';
-import { Form } from './components/form/form';
-import { Link } from './components/link/link';
-import { Error } from './components/error/error';
-import { BackUrl } from './components/backUrl/backUrl';
-import { Avatar } from './components/avatar/avatar';
-import { UserField } from './components/userField/userField';
-import { ChatList } from './components/chatList/chatList';
-import { ChatInfo } from './components/chatInfo/chatInfo';
-import { ChatForm } from './components/chatForm/chatForm';
-import { ChatMessage } from './components/chatMessage/chatMessage';
+document.addEventListener('DOMContentLoaded', () => {
+    const router = new Router();
 
-registerComponent(Button);
-registerComponent(Field);
-registerComponent(Form);
-registerComponent(Link);
-registerComponent(Error);
-registerComponent(BackUrl);
-registerComponent(Avatar);
-registerComponent(UserField);
-registerComponent(ChatList);
-registerComponent(ChatInfo);
-registerComponent(ChatForm);
-registerComponent(ChatMessage);
+    router
+        .use('/', pageHome, {})
+        .use('/sign-in', pageLogin, {})
+        .use('/sign-up', pageRegister, {})
+        .use('/messenger', pageChats, {})
+        .use('/messenger/create', pageChatsCreate, {})
+        .use('/messenger/edit', pageChatsEdit, {})
+        .use('/settings', pageSettings, {})
+        .use('/settings/edit', pageSettingsEdit, {})
+        .use('/settings/password', pagePasswordEdit, {})
+        .use('/500', page500, {})
+        .use('*', page404, {})
+        .start();
 
-const setDocumentTitle = (title: string): void => {
-    if (title) {
-        document.title = `Чат - ${title}`;
-    }
-};
-
-const setBodyClassName = (cls: string): void => {
-    if (cls) {
-        document.body.className = `page-${cls}`;
-    }
-};
-
-const currentPage = getCurrentPage();
-const { title, id, Page } = currentPage;
-const page = new Page();
-
-setDocumentTitle(title);
-setBodyClassName(id);
-
-const app = document.getElementById('app');
-app.innerHTML = '';
-app.appendChild(page.getContent());
+    // имитация задержки
+    setTimeout(checkUser, 1000);
+});

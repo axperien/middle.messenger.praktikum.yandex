@@ -20,7 +20,7 @@
         "link": {
             "cls": "",
             "text": "Нет аккаунта?",
-            "url": "/register"
+            "url": "/sign-up"
         }
     },
     "register": {
@@ -84,13 +84,13 @@
         "link": {
             "cls": "",
             "text": "Войти",
-            "url": "/login"
+            "url": "/sign-in"
         }
     },
     "user_default": {
         "name": "Иван",
         "back": {
-            "url": "/chats"
+            "url": "/messenger"
         },
         "avatar": {
             "image": "./images/avatar1.png",

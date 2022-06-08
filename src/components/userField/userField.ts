@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import Block from '../../core/Block';
 import { checkFormFieldError } from '../../core/validator';
 import { UserFieldProps } from '../../core/types';
@@ -6,21 +5,7 @@ import { UserFieldProps } from '../../core/types';
 export class UserField extends Block<UserFieldProps> {
     public static componentName = 'UserField';
 
-    constructor(props: UserFieldProps) {
-        super({
-            ...props,
-            events: {
-                blur: (e: Event): void => {
-                    console.log('blur');
-                },
-                focus: (e: Event): void => {
-                    console.log('focus');
-                },
-            },
-        });
-    }
-
-    _addEvents(): void {
+    addEvents(): void {
         const inputs = this._element?.querySelectorAll('input');
 
         if (inputs) {
@@ -31,8 +16,6 @@ export class UserField extends Block<UserFieldProps> {
                 });
             });
         }
-
-        super._addEvents();
     }
 
     render(): string {
