@@ -1,8 +1,7 @@
-/* eslint-disable no-underscore-dangle */
 import Block from '../../core/Block';
 import './form.scss';
 import { checkFormFieldError } from '../../core/validator';
-import { FormProps } from '../../core/types';
+import { FormProps, Indexed } from '../../core/types';
 
 export class Form extends Block<FormProps> {
     public static componentName = 'Form';
@@ -15,7 +14,7 @@ export class Form extends Block<FormProps> {
         });
     }
 
-    _addEvents(): void {
+    addEvents(): void {
         const form = this._element as HTMLFormElement;
 
         if (form) {
@@ -26,7 +25,8 @@ export class Form extends Block<FormProps> {
 
                 inputs.forEach((elem) => {
                     const input = elem as HTMLInputElement;
-                    checkFormFieldError(input);
+                    const prefix = input.className.split(' ')[0].split('__')[0];
+                    checkFormFieldError(input, prefix);
                 });
 
                 const inputsWithError = form.querySelectorAll('.form__input--error');
@@ -37,18 +37,21 @@ export class Form extends Block<FormProps> {
                 }
 
                 const formData = new FormData(form);
-                const data : { [key: string]: any } = {};
 
-                // eslint-disable-next-line no-restricted-syntax
-                for (const [name, value] of formData) {
+                const data: Indexed = {
+                    login: '',
+                    password: '',
+                };
+
+                [...formData.entries()].forEach(([name, value]) => {
                     data[name] = value;
-                }
+                });
 
-                console.log(data);
+                const { onSubmit } = this.props;
+
+                onSubmit(data);
             });
         }
-
-        // super._addEvents();
     }
 
     render(): string {

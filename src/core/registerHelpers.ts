@@ -1,4 +1,3 @@
-/* eslint-disable prefer-rest-params */
 import Handlebars from 'handlebars';
 
 Handlebars.registerHelper({
@@ -8,10 +7,10 @@ Handlebars.registerHelper({
     gt: (v1, v2) => v1 > v2,
     lte: (v1, v2) => v1 <= v2,
     gte: (v1, v2) => v1 >= v2,
-    and() {
-        return Array.prototype.every.call(arguments, Boolean);
+    and(...args) {
+        return Array.prototype.every.call(args, Boolean);
     },
-    or() {
-        return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+    or(...args) {
+        return Array.prototype.slice.call(args, 0, -1).some(Boolean);
     },
 });

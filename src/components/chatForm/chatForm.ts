@@ -1,6 +1,7 @@
+import { sendMessage } from '../../controllers/chats';
 import Block from '../../core/Block';
 import './chatForm.scss';
-import { ChatFormProps } from '../../core/types';
+import { ChatFormProps, Indexed } from '../../core/types';
 
 export class ChatForm extends Block<ChatFormProps> {
     public static componentName = 'ChatForm';
@@ -16,14 +17,15 @@ export class ChatForm extends Block<ChatFormProps> {
 
                     if (form) {
                         const formData = new FormData(form);
-                        const data = {};
+                        const data: Indexed = {};
 
-                        // eslint-disable-next-line no-restricted-syntax
-                        for (const [name, value] of formData) {
+                        [...formData.entries()].forEach(([name, value]) => {
                             data[name] = value;
-                        }
+                        });
 
-                        console.log(data);
+                        if (data.message) {
+                            sendMessage(encodeURIComponent(data.message as string));
+                        }
                     }
                 },
             },
@@ -43,6 +45,7 @@ export class ChatForm extends Block<ChatFormProps> {
                         placeholder="Сообщение" 
                         name="message" 
                         type="text"
+                        autocomplete="off"
                         >
                 </div>
                 <button class="dialog__submit" type="submit"></button>

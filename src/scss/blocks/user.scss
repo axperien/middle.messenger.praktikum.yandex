@@ -1,14 +1,12 @@
 .user {
-    width: 100%;
-    // height: 100%;
-    min-height: 725px;
     position: relative;
-    padding: 50px $padding;
-
     align-self: center;
+    width: 100%;
+    min-height: 725px;
+    padding: 50px $padding;
+    overflow: hidden;
 
     @include box();
-    overflow: hidden;
 
     &__container {
         width: 100%;
@@ -17,10 +15,10 @@
     }
 
     &__name {
-        text-align: center;
+        margin: 20px 0 60px;
         font-weight: bold;
         font-size: 20px;
-        margin: 20px 0 60px;
+        text-align: center;
     }
 
     &__form {
@@ -31,60 +29,64 @@
 
     &__field {
         &:not(:last-child) {
-            border-bottom: 1px solid $c-gray-light;
             margin-bottom: 10px;
+            border-bottom: 1px solid $c-gray-light;
         }
     }
 
     &__label {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
         span {
-            width: 220px;
             flex-shrink: 0;
+            width: 220px;
             font-weight: bold;
         }
     }
 
     &__error {
         position: absolute;
-        left: 0;
         top: 100%;
+        left: 0;
         width: 100%;
-        text-align: right;
         margin-top: 2px;
+        color: #ff2f2f;
         font-size: 8px;
-        color: #FF2F2F;
-        // opacity: 0;
-        pointer-events: none;
+        text-align: right;
         transition: $transition;
+        pointer-events: none;
+
         .is-invalid & {
-            opacity: 1;
             margin-top: 7px;
+            opacity: 1;
         }
     }
 
     &__input {
         display: block;
         flex-grow: 1;
-        border: none;
         height: 30px;
-        font-size: 13px;
-        color: $c-gray;
-        text-align: right;
         padding: 0;
+        color: $c-gray;
+        font-size: 13px;
+        text-align: right;
         background: transparent;
+        border: none;
         outline: none;
-        
+
         @include autocompleteInputBg();
+
+        &[readonly] {
+            cursor: default;
+        }
 
         &::placeholder {
             transition: $transition;
         }
-        
+
         &:focus::placeholder {
             opacity: 0;
         }
@@ -96,9 +98,10 @@
 
     &__link-wrapper {
         padding-bottom: 3px;
-        &:not(:last-child) {            
-            border-bottom: 1px solid $c-gray-light;
+
+        &:not(:last-child) {
             margin-bottom: 5px;
-        }       
+            border-bottom: 1px solid $c-gray-light;
+        }
     }
 }

@@ -1,24 +1,24 @@
-@import '../../scss/global/variables';
-@import '../../scss/global/mixins';
+@import "../../scss/global/variables";
+@import "../../scss/global/mixins";
 
 .form {
-    padding: 40px $padding;
     width: 400px;
     max-width: 100%;
     margin: 0 auto;
+    padding: 40px $padding;
     @include box();
 
     &__title {
-        text-align: center;
+        margin-bottom: 40px;
         font-weight: bold;
         font-size: 20px;
-        margin-bottom: 40px;
+        text-align: center;
     }
 
     &__field {
+        position: relative;
         max-width: 280px;
         margin: 0 auto;
-        position: relative;
 
         &:not(:last-child) {
             margin-bottom: 40px;
@@ -26,31 +26,31 @@
     }
 
     &__label {
-        display: block;
         position: relative;
+        display: block;
         color: $c-gray;
 
         &:focus {
             opacity: 0.5;
         }
-        
+
         span {
             position: absolute;
-            left: 0;
             top: 0;
-            transition: $transition;
+            left: 0;
             transform-origin: 0 50%;
+            transition: $transition;
         }
     }
 
     &__input {
         display: block;
         width: 100%;
-        border: none;
         height: 30px;
-        font-size: 13px;
         padding: 0;
+        font-size: 13px;
         background: transparent;
+        border: none;
         border-bottom: 1px solid $c-violet;
         outline: none;
         @include autocompleteInputBg();
@@ -58,39 +58,32 @@
         &:-webkit-autofill,
         &:not(:placeholder-shown),
         &:focus {
-
             & + span {
                 top: -15px;
                 transform: scale(0.7);
             }
         }
-
-        // &:required:invalid:not(:placeholder-shown) + span + .form__error {
-        //     opacity: 1;
-        //     margin-top: 7px;
-        // }
     }
 
     &__error {
         position: absolute;
-        left: 0;
         top: 100%;
+        left: 0;
         width: 100%;
         margin-top: 7px;
+        color: #ff2f2f;
         font-size: 8px;
-        color: #FF2F2F;
-        // opacity: 0;
-        pointer-events: none;
         transition: $transition;
+        pointer-events: none;
+
         .is-invalid & {
-            opacity: 1;
             margin-top: 7px;
+            opacity: 1;
         }
     }
 
     &__links {
-        text-align: center;
         margin-top: 14px;
+        text-align: center;
     }
-    
 }
