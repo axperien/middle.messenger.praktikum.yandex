@@ -1,4 +1,8 @@
-export const queryStringify = (data: Record<string, any>) => {
+export const queryStringify = (data: Record<string, any>): string => {
+    if (!data) {
+        return '';
+    }
+
     let str = '?';
 
     const arrayOfData = Object.keys(data);

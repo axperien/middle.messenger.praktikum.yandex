@@ -1,3 +1,6 @@
+@import "../../scss/global/variables";
+@import "../../scss/global/mixins";
+
 .modal {
     position: fixed;
 
@@ -17,7 +20,7 @@
     opacity: 0;
     transition: 0.2s linear 0.1s;
 
-    &.is-visible {
+    &.is-open {
         max-height: 10000px;
         overflow: auto;
         opacity: 1;
@@ -37,7 +40,7 @@
 
         @include box();
 
-        .is-visible & {
+        .is-open & {
             top: 0;
             opacity: 1;
             transition-delay: 0.1s;

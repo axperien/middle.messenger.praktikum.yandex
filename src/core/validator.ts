@@ -19,6 +19,9 @@ const validateForm = (name:string, value: string):string => {
         }
         break;
     case 'password':
+    case 'oldPassword':
+    case 'newPassword':
+    case 'newPassword_repeat':
         if (!(checkMinLength(value, 6) && checkMaxLength(value, 40))) {
             errorText = 'Минимум 6, максимум 40 символов';
         } else if (!/^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value)) {

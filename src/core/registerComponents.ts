@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import Handlebars, { HelperOptions } from 'handlebars';
 import Block from './Block';
 
@@ -9,7 +8,7 @@ interface BlockConstructable<Props = any> {
 
 export default function registerComponent<Props = any>(Component: BlockConstructable) {
     Handlebars.registerHelper(
-        Component.componentName,
+        Component.componentName as string,
         ({ hash: { ref, ...hash }, data }: HelperOptions) => {
             if (!data.root.children) {
                 data.root.children = {};

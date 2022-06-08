@@ -7,8 +7,17 @@ export class ChatMessage extends Block<ChatMessageProps> {
 
     render(): string {
         return `
-            <div class="message message--{{ from }}">
+            <div class="message message--{{#if (eq you true)}}self{{else}}user{{/if}}">
                 <div class="message__box">
+                    {{#if author }}
+                        <div class="message__author">
+                            {{#if (ne author.display_name '') }}
+                                {{ author.display_name }}
+                            {{else}}
+                                {{ author.login }}
+                            {{/if}}
+                        </div>
+                    {{/if}}
                     {{#if text }}
                         <div class="message__text">{{ text }}</div>
                     {{/if}}
@@ -17,7 +26,7 @@ export class ChatMessage extends Block<ChatMessageProps> {
                             <img src="{{ image }}" alt="">
                         </div>
                     {{/if}}
-                    <div class="message__time">{{ time }}</div>
+                    <div class="message__time">{{ created }}</div>
                 </div>
             </div>
         `;

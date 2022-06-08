@@ -1,16 +1,10 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable @typescript-eslint/no-this-alias */
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable no-underscore-dangle */
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
 import { Nullable, Values } from './types';
+import { Router } from './Router';
 
-interface BlockMeta<P = any> {
-  props: P;
-}
+const globalRouter = new Router();
 
 type Events = Values<typeof Block.EVENTS>;
 
@@ -24,11 +18,9 @@ export default class Block<P = any> {
 
     public id = nanoid(6);
 
-    private readonly _meta: BlockMeta;
-
     protected _element: Nullable<HTMLElement> = null;
 
-    protected readonly props: P;
+    props: P;
 
     protected children: {[id: string]: Block} = {};
 
@@ -40,17 +32,19 @@ export default class Block<P = any> {
 
     public static componentName?: string;
 
+    public needCheckAuth = false;
+
+    public pageTitle?: string = '';
+
+    public pageCls?: string = '';
+
     public constructor(props?: P) {
         const eventBus = new EventBus<Events>();
-
-        this._meta = {
-            props,
-        };
 
         this.getStateFromProps(props);
 
         this.props = this._makePropsProxy(props || {} as P);
-        this.state = this._makePropsProxy(this.state);
+        this.state = this._makePropsProxy(this.props);
 
         this.eventBus = () => eventBus;
 
@@ -70,8 +64,8 @@ export default class Block<P = any> {
         this._element = this._createDocumentElement('div');
     }
 
-    protected getStateFromProps(props: any): void {
-        this.state = {};
+    protected getStateFromProps(props?: P): void {
+        this.state = props;
     }
 
     init() {
@@ -83,17 +77,34 @@ export default class Block<P = any> {
         this.componentDidMount(props);
     }
 
-    componentDidMount(props: P) {}
+    componentDidMount(_props: P) {
+
+    }
 
     _componentDidUpdate(oldProps: P, newProps: P) {
         const response = this.componentDidUpdate(oldProps, newProps);
+
         if (!response) {
             return;
         }
+
         this._render();
     }
 
-    componentDidUpdate(oldProps: P, newProps: P) {
+    componentDidUpdate(_oldProps: P, _newProps: P) {
+        if (this.needCheckAuth) {
+            const { store } = this.props as Record<string, any>;
+
+            if (store) {
+                const { user, isLoadApp } = store;
+
+                if (user === null && isLoadApp) {
+                    globalRouter.go('/sign-in');
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 
@@ -156,10 +167,10 @@ export default class Block<P = any> {
                 return typeof value === 'function' ? value.bind(target) : value;
             },
             set: (target: Record<string, unknown>, prop: string, value: unknown) => {
-                // eslint-disable-next-line no-param-reassign
                 target[prop] = value;
 
                 this.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+
                 return true;
             },
             deleteProperty() {
@@ -173,7 +184,6 @@ export default class Block<P = any> {
     }
 
     _removeEvents() {
-        // eslint-disable-next-line prefer-destructuring
         const events: Record<string, () => void> = (this.props as any).events;
 
         if (!events || !this._element) {
@@ -186,7 +196,7 @@ export default class Block<P = any> {
     }
 
     _addEvents() {
-        // eslint-disable-next-line prefer-destructuring
+        this.addEvents();
         const events: Record<string, () => void> = (this.props as any).events;
 
         if (!events) {
@@ -196,6 +206,10 @@ export default class Block<P = any> {
         Object.entries(events).forEach(([event, listener]) => {
             this._element!.addEventListener(event, listener);
         });
+    }
+
+    addEvents() {
+
     }
 
     _compile(): DocumentFragment {
@@ -226,5 +240,13 @@ export default class Block<P = any> {
 
     hide() {
         this.getContent().style.display = 'none';
+    }
+
+    getPageTitle() {
+        return this.pageTitle;
+    }
+
+    getPageCls() {
+        return this.pageCls;
     }
 }
