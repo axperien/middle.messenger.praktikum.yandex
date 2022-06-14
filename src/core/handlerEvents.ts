@@ -41,7 +41,7 @@ export const handlerFileForm = async (
         const fileLabel = fileElement?.querySelector('label') as HTMLLabelElement;
         const fileLabelText = fileLabel?.textContent || '' as string;
 
-        fileInput?.addEventListener('change', (e: Event) => {
+        fileInput?.addEventListener('change', () => {
             let fileName = '';
 
             if (fileInput.files) {

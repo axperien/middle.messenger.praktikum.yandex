@@ -19,7 +19,7 @@ export class ChatsEditPage extends Block {
         super();
 
         this.setProps({
-            onAddUser: (e: Event) => {
+            onAddUser: () => {
                 const inputUser = document.querySelector('.user__input[name="login"]') as HTMLInputElement;
 
                 if (inputUser) {
@@ -78,7 +78,7 @@ export class ChatsEditPage extends Block {
         });
     }
 
-    componentDidMount(props: any) {
+    componentDidMount() {
         if (!globalStore || (!globalStore.getState().currentChat
             && !globalStore.getState().isLoadApp)) {
             globalRouter.go('/messenger');

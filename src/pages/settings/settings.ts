@@ -13,7 +13,7 @@ export class UserPage extends Block {
 
     public needCheckAuth = true;
 
-    componentDidMount(props: any): void {
+    componentDidMount(): void {
         this.setProps({
             onLogout: handerLogout,
             onAvatarClick: (e: Event) => {

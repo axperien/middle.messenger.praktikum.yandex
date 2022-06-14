@@ -1,5 +1,5 @@
 import { Store } from '../../core/Store';
-import { getChatsList, getCurrentChatInfo } from '../../controllers/chats';
+import { getCurrentChatInfo } from '../../controllers/chats';
 import Block from '../../core/Block';
 import Hoc from '../../core/Hoc';
 

@@ -1,7 +1,3 @@
-type Indexed<T = unknown> = {
-    [key in string]: T;
-};
-
 function isEqualObject(a: Record<string, any>, b: Record<string, any>): boolean {
     if (typeof a === typeof b) {
         if (typeof a === 'object' && a != null) {

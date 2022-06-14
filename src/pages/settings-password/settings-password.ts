@@ -15,7 +15,7 @@ export class UserEditPasswordPage extends Block {
 
     public needCheckAuth = true;
 
-    componentDidMount(props: any): void {
+    componentDidMount(): void {
         this.setProps({
             onSave: (e: Event) => {
                 const target = e.target as HTMLButtonElement;
