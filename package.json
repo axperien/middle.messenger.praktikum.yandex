@@ -23,7 +23,8 @@
     "docker:build": "docker buildx build --platform linux/amd64 -t yandex-messenger .",
     "docker:run": "docker run -d -p 3000:3000 yandex-messenger",
     "docker:stop": "docker stop $(docker ps -q --filter ancestor=yandex-messenger)",
-    "deploy": "heroku container:push web && heroku container:release web"
+    "deploy": "heroku container:push web && heroku container:release web",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
