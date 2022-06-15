@@ -12,17 +12,16 @@ module.exports = merge(webpackConfiguration, {
 
     /* Development Server Configuration */
     devServer: {
-        contentBase: environment.paths.output,
-        watchContentBase: true,
-        publicPath: '/',
+        client: {
+            overlay: true,
+        },
+        static: {
+            publicPath: '/',
+        },
         open: true,
         historyApiFallback: true,
         compress: true,
-        overlay: true,
         hot: false,
-        watchOptions: {
-            poll: 300,
-        },
         ...environment.server,
     },
 
